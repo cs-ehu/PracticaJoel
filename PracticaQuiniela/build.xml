@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ====================================================================== 
+    PracticaQuiniela    
+     Contiene el proyecto básico para la realización de la práctica
+                   
+     LSI                                                                
+     ====================================================================== -->
+<project name="PracticaQuiniela" default="test">
+	<description>
+            Contiene el proyecto para la realización de la práctica
+    </description>
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="doc" location="doc" />
+	<property name="src" location="src" />
+	<property name="test.dir" location="tests" />
+	<property name="dir.lib" location="lib" />
+	<property name="build" location="bin" />
+
+	<path id="JUnit 3.libraryclasspath">
+		<fileset dir="${dir.lib}">
+			<include name="**/*.jar" />
+		</fileset>
+	</path>
+	<path id="PracticaQuiniela.classpath">
+		<pathelement location="bin" />
+		<path refid="JUnit 3.libraryclasspath" />
+	</path>
+
+	<target name="init">
+		<mkdir dir="${doc}" />
+
+		<mkdir dir="${build}" />
+		<copy includeemptydirs="false" todir="${build}">
+			<fileset dir="${src}">
+				<exclude name="**/*.launch" />
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+	<target name="clean">
+		<delete dir="${doc}" />
+		<delete dir="${build}" />
+	</target>
+
+
+	<!-- ================================= 
+          target: doc              
+         ================================= -->
+	<target name="doc" depends="init" description="Genera Javadoc">
+		<mkdir dir="${doc}" />
+		<javadoc sourcepath="${src}:${test.dir}" destdir="${doc}" encoding="UTF-8" charset="UTF-8" linksource="true">
+			<classpath>
+				<path path="${src}:${test.dir}"/>
+				<fileset dir="${dir.lib}">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javadoc>
+	</target>
+
+
+	<target depends="init" name="build">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<javac includeantruntime="false" debug="true" debuglevel="${debuglevel}" destdir="${build}">
+			<src path="${src}" />
+			<classpath refid="PracticaQuiniela.classpath" />
+		</javac>
+	</target>
+
+	<!-- ================================= 
+          target: test              
+         ================================= -->
+	<target name="test" description="Ejecuta los tests definidos para el proyecto" depends="build">
+		<junit fork="yes" printsummary="withOutAndErr" haltonfailure="yes">
+			<formatter type="plain" usefile="false" />
+
+			<test name="packFuncionalidad.PruebasPractica" />
+			<classpath refid="PracticaQuiniela.classpath" />
+		</junit>
+	</target>
+
+</project>

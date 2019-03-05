@@ -1,0 +1,266 @@
+LEXICO
+ALGORITMO
+	addApuestaMultiple(dato pQuiniela: Quiniela, dato pPartido: Entero)--> Booleano: función
+	PRE{pQuiniela contiene una quiniela inicializada (no nula)}
+	POST{}
+	LEXICO
+		valida: Booleano
+		i: Entero
+	ALGORITMO
+		valida <- Verdadero
+		Si (pQuiniela.numApuestasMultiples < Constantes.NUM_APUESTAS_MULTIPLES Y pPartido >= 0 Y pPartido <= Constantes.PARTIDOS) Entonces
+			i <- 0
+			Repetir_Mientras valida Y i < pQuiniela.numApuestasMultiples Hacer
+				Si pQuiniela.apuestasMultiples[i] = pPartido Entonces
+					valida <- Falso
+				Fin_Si
+				i++
+			Fin_Repetir
+			Si valida Entonces
+				pQuiniela.apuestasMultiples[i] = pPartido
+				pQuiniela.numApuestasMultiples++
+			Fin_Si
+		Si_No
+			valida <- Falso
+		Fin_Si
+		Devolver valida
+	FIN
+	
+	realizarApuestaPartido(dato pQuiniela: Quiniela,dato pPartido: Entero, dato pResultado: Char)--> Booleno: una función
+	PRE{pQuiniela contiene una quiniela inicializada (no nula)}
+	POST{}
+	LEXICO
+		valida: Booleano
+		multiple: Booleano
+		i: Entero
+	ALGORITMO
+		valida <- Verdadero
+		Si (pPartido >= 0 Y pPartido <= Constantes.PARTIDOS) Entonces
+			multiple <- Falso
+			i <- 0
+			Repetir_Mientras No(multiple) Y i < pQuiniela.numApuestasMultiples Hacer
+				Si pQuiniela.apuestasMultiples[i] = pPartido Entonces
+					multiple <- Verdadero
+				Fin_Si
+				i++
+			Fin_Repetir
+			Si multiple Hacer
+				Si pResultado != 'X' && pResultado != '2' Hacer
+					valida <- Falso
+				Fin_Si
+			SI_NO 
+				Si pResultado != '1' && pResultado != 'X' && pResultado != '2'
+					valida <- Falso
+				Fin_Si
+			Fin_Si
+			Si valida Hacer
+				pQuiniela.apuesta[pPartido] <- pResultado
+				Si multiple Hacer
+					addApuestaMultiple(pQuiniela, pPartido)
+				Fin_Si
+			Fin_Si
+		SI_NO 
+			valida <- Falso
+		Fin_Si
+		Devolver valida
+	FIN
+	
+	cargarQuiniela(dato pFich: Caracter) --> Quiniela: una función
+	PRE{pFich contiene el nombre del fichero (no nula)}
+	POST{}
+	LEXICO
+		quiniela: Quiniela
+		valido: Booleano
+		i: Entero
+		k: Entero
+	ALGORITMO
+		quiniela <- null
+		Abrir (fichero)
+			Si HayMasElementos Hacer
+				Leer (id, fichero)
+				Si (HayMasElementos) Entonces
+					Leer (jornada, fichero)
+					Si (HayMasElementos Y jornada > 0 Y jornada <= Constantes.JORNADAS) Entonces
+						Leer (nombre, fichero)
+						Si (HayMasElementos) Entones
+							Leer (numApuestasMultiples)
+							Si (numApuestasMultiples <= Constantes.NUM_APUESTAS_MULTIPLES && numApuestasMultiples >= 0) Entonces
+							quiniela = new Quiniela()
+							quiniela.identificador <- id
+							quiniela.numJornada <- jornada
+							quiniela.nombreApostante <- nombre
+							quiniela.apuestasMultiples <- Crear Entero[Constantes.NUM_APUESTAS_MULTIPLES]
+							quiniela.apuesta <- Crear Char[Constantes.PARTIDOS]
+							valido <- Verdadero
+							i <- 0
+							Repetir_Mientras (valido Y i < numApuestasMultiples Y HayMasElementos) Hacer
+								valido <- addApuestaMultiple(quiniela, HayMasElementos-1)
+								i++
+							Fin_Repetir
+							k <- 0
+							Repetir_Mientras (valido Y k <= Constantes.PARTIDOS Y HayMasElementos) Hacer
+								valido <- realizarApuestaPartido(quiniela, k, fichero.next().charAt(0))
+								k++
+							Fin_Repetir
+							Si No(valido) Entones
+								quiniela <- null
+							Fin_Si
+						Fin_Si
+					Fin_Si
+				Fin_Si
+			Fin_Si
+		Cerrar (fichero)
+		Devolver quiniela
+	FIN
+	calcularPrecioQuiniela(dato pQuiniela: Quiniela) --> Real: una función
+	PRE{ pQuiniela contiene una quiniela completada (no nula)}
+	POST{}
+	ALGORITMO
+		Devolver (1.5f + pQuiniela.numApuestasMultiples*0.5f)
+	FIN
+	
+	sellarApuesta(dato pAdmApuestas: AdministracionApuestas , dato pQuiniela: Quiniela)--> Real: una función
+	PRE{pQuiniela contiene una quiniela completada no nula}
+	POST{}
+	LEXICO
+		Quiniela [] quinielasJornada <- pAdmApuestas.quinielas[pQuiniela.numJornada]
+	ALGORITMO
+		Si quinielasJornada[quinielasJornada.length-1] != null Entonces
+			Quiniela [] aux = Crear Quiniela[quinielasJornada.length+1]
+			Para_Cada i Entre 0 Y quinielasJornada.length Hacer
+				aux[i] <- quinielasJornada[i];
+			Fin_Para_Cada
+			aux[quinielasJornada.length] <- pQuiniela
+			pAdmApuestas.quinielas[pQuiniela.numJornada] <- aux
+		Si_No
+			quinielasJornada[quinielasJornada.length-1] <- pQuiniela
+		Fin_Si
+		Devolver calcularPrecioQuiniela(pQuiniela)
+	FIN
+	
+	calcularNumeroAciertos(dato pCal: Calendario , dato pResultados: Resultados , datopListaEquipos ListaEquipos , dato pQuiniela: Quiniela )
+	PRE{ pQuiniela contiene una quiniela completada no nula y pResultados contiene los resultados de todos lospartidos hasta el momento, 
+		incluidos los partidos de la jornada a la que corresponde la quiniela. pCal contiene el calendario completo de la liga y 
+		PlistaEquipos contiene la lista de equipos que participan en la liga}
+	POST{}
+	LEXICO
+		jornada: Jornada
+		partidos: Partido[]
+		resultados: Caracter []
+		numAciertos: Entero
+		i: Entero
+		eqL: Entero
+		eqV: Entero
+		j: Entero
+		encontradoEqL: Booleano
+		encontradoEqV: Booleano
+		resultado: Resultado
+		r: Caracter
+		multiple: Booleano
+	ALGORITMO
+		jornada <- pCal.jornadas[pQuiniela.numJornada]
+		partidos <- jornada.partidos
+		resultados <- Crear Caracter[Constantes.PARTIDOS]
+		numAciertos <- 0
+		Para_Cada i Entre 0 Y partidos.length Hacer
+			eqL <- 0
+			eqV <- 0
+			j <- 0
+			encontradoEqL <- Falso
+			encontradoEqV <- Falso
+			Repetir_Mientras No(encontradoEqL) O No(encontradoEqV) Y j < pListaEquipos.equipos.length Hacer
+				Si partidos[i].equipoLocal.equals(pListaEquipos.equipos[j]) Entonces
+					encontradoeqL <- Verdadero
+					eqL <- j
+				Si partidos[i].equipoVisitante.equals(pListaEquipos.equipos[j]) Entonces
+					encontradoeqV <- Verdadero
+					eqV <- j
+				Fin_Si
+				j++
+			Fin_Repetir_Mientras
+			Si encontradoEqL y encontradoEqV Entonces
+				resultado <- pResultados.resultados[eqL][eqV]
+				Si resultado.golesLocal > resultado.golesVisitante Entonces
+					r <- `1´
+				Si_No_Si resultado.golesLocal < resultado.golesVisitante Entonces
+					r <- `2´
+				Si_No 
+					r <- `X´
+				Fin_Si
+				resultados[i] <- r
+			Fin_Si
+		Fin_Para_Cada
+		Para_Cada i Entre 0 Y pQuiniela.apuesta.length Hacer
+			Si pQuiniela.apuesta[i] = resultados[i] Entonces
+				numAciertos++
+			Si_No
+				multiple <- Falso
+				j <- 0
+				Repetir_Mientras No(multiple) Y j < pQuiniela.numApuestasMultiples Hacer
+					Si (i = pQuiniela.apuestasMultiples[j]) Entonces
+						multiple <- Verdadero
+						j++
+					Fin_Si
+				Fin_Repetir_Mientras
+				Si (multiple Y resultados[i] <- '1') Entonces
+					numAciertos++
+				Fin_Si
+			Fin_Si
+		Fin_Para_Cada
+	Devolver numAciertos
+	FIN
+	
+	PremiosAcertantes calcularPremiosAcertantes(dato pCal: Calendario, dato pListaEquip: ListaEquipos , dato pRes: Resultados , 
+	dato pAdm: AdministracionApuestas , dato pJorn: Entero)
+	LEXICO
+		quinielas: Quiniela []
+		recaudacion: Real
+		acertantes10: Entero
+		acertantes9: Entero
+		acertantes8: Entero
+		aciertos: Entero
+		premios: PremiosAcertantes
+	ALGORITMO
+		Si (pJorn >= 0 Y pJorn < Constantes.JORNADAS) Entonces
+			quinielas <- pAdm.quinielas[pJorn]
+			recaudacion <- 0.0f
+			acertantes10 <- 0
+			acertantes9 <- 0
+			acertantes8 <- 0
+			aciertos <- 0
+			Para_Cada i Entre 0 Y quinielas.length Hacer
+				aciertos <- calcularNumeroAciertos(pCal, pRes, pListaEquip, quinielas[i])
+				recaudacion <- recaudacion + calcularPrecioQuiniela(quinielas[i])
+				Si (aciertos = 10) Entonces
+					acertantes10++
+				Fin_Si
+				Si (aciertos = 9) Entonces
+					acertantes9++
+				Fin_Si
+				Si (aciertos = 8) Entonces
+					acertantes8++
+				Fin_Si
+			Fin_Para_Cada
+			premios = Crear PremiosAcertantes()
+			Si (acertantes10 = 0) 
+				premios.premio10Aciertos <- 0
+			Si_No
+				premios.premio10Aciertos <- (recaudacion*Constantes.PORCENTAJE_10_ACIERTOS)/acertantes10
+			Fin_Si
+			Si (acertantes9 = 0) 
+				premios.premio9Aciertos <- 0
+			Si_No
+				premios.premio9Aciertos <- recaudacion*Constantes.PORCENTAJE_9_ACIERTOS/acertantes9
+			Fin_Si
+			Si (acertantes8 = 0)
+				premios.premio8Aciertos <- 0
+			Si_No
+				premios.premio8Aciertos <- recaudacion*Constantes.PORCENTAJE_8_ACIERTOS/acertantes8
+			Fin_Si
+			Devolver premios
+		Si_No
+			Devolver nulo
+		Fin_Si
+	FIN
+
+FIN

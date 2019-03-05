@@ -1,0 +1,5 @@
+package pmyoo;
+
+public enum Tarea {
+	EN_CASA,BUSCANDO_FILA, BUSCANDO_CAJA, CARGANDO, DEJANDO_CAJA, LIBRE;
+}

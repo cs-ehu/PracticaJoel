@@ -1,0 +1,667 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="es">
+<head>
+<title>Source code</title>
+<link rel="stylesheet" type="text/css" href="../../stylesheet.css" title="Style">
+</head>
+<body>
+<div class="sourceContainer">
+<pre><span class="sourceLineNo">001</span>package packFuncionalidad;<a name="line.1"></a>
+<span class="sourceLineNo">002</span><a name="line.2"></a>
+<span class="sourceLineNo">003</span>import java.util.Date;<a name="line.3"></a>
+<span class="sourceLineNo">004</span><a name="line.4"></a>
+<span class="sourceLineNo">005</span>import junit.framework.TestCase;<a name="line.5"></a>
+<span class="sourceLineNo">006</span>import packDefiniciones.AdministracionApuestas;<a name="line.6"></a>
+<span class="sourceLineNo">007</span>import packDefiniciones.Calendario;<a name="line.7"></a>
+<span class="sourceLineNo">008</span>import packDefiniciones.Constantes;<a name="line.8"></a>
+<span class="sourceLineNo">009</span>import packDefiniciones.ListaEquipos;<a name="line.9"></a>
+<span class="sourceLineNo">010</span>import packDefiniciones.PremiosAcertantes;<a name="line.10"></a>
+<span class="sourceLineNo">011</span>import packDefiniciones.Quiniela;<a name="line.11"></a>
+<span class="sourceLineNo">012</span>import packDefiniciones.Resultado;<a name="line.12"></a>
+<span class="sourceLineNo">013</span>import packDefiniciones.Resultados;<a name="line.13"></a>
+<span class="sourceLineNo">014</span><a name="line.14"></a>
+<span class="sourceLineNo">015</span>public class PruebasPractica extends TestCase {<a name="line.15"></a>
+<span class="sourceLineNo">016</span>        private final static boolean LONG_TEST = false;<a name="line.16"></a>
+<span class="sourceLineNo">017</span>        private final static int NUM_ELEMENTS = LONG_TEST? Integer.MAX_VALUE: 10000;<a name="line.17"></a>
+<span class="sourceLineNo">018</span>        <a name="line.18"></a>
+<span class="sourceLineNo">019</span>        private Resultados resultados;<a name="line.19"></a>
+<span class="sourceLineNo">020</span>        private AdministracionApuestas administracionApuestas;<a name="line.20"></a>
+<span class="sourceLineNo">021</span>        private ListaEquipos listaEquipos;<a name="line.21"></a>
+<span class="sourceLineNo">022</span>        private Calendario calendario;<a name="line.22"></a>
+<span class="sourceLineNo">023</span>        private Quiniela quiniela1, quiniela2, quiniela3, quiniela4, quiniela5,<a name="line.23"></a>
+<span class="sourceLineNo">024</span>                        quiniela6, quiniela7, quiniela8;<a name="line.24"></a>
+<span class="sourceLineNo">025</span>        private Quiniela[] quinielasPruebas;<a name="line.25"></a>
+<span class="sourceLineNo">026</span><a name="line.26"></a>
+<span class="sourceLineNo">027</span>        /**<a name="line.27"></a>
+<span class="sourceLineNo">028</span>         * Inicializa los datos que se van a utilizar para las pruebas. Este<a name="line.28"></a>
+<span class="sourceLineNo">029</span>         * subprograma se ejecuta siempre antes de cada una de las pruebas, lo que<a name="line.29"></a>
+<span class="sourceLineNo">030</span>         * permite conocer el estado previo y determinar cuál debería ser el<a name="line.30"></a>
+<span class="sourceLineNo">031</span>         * resultado de la ejecución de cada subprograma.<a name="line.31"></a>
+<span class="sourceLineNo">032</span>         */<a name="line.32"></a>
+<span class="sourceLineNo">033</span>        protected void setUp() throws Exception {<a name="line.33"></a>
+<span class="sourceLineNo">034</span><a name="line.34"></a>
+<span class="sourceLineNo">035</span>                administracionApuestas = new AdministracionApuestas();<a name="line.35"></a>
+<span class="sourceLineNo">036</span>                resultados = inicializarResultados();<a name="line.36"></a>
+<span class="sourceLineNo">037</span><a name="line.37"></a>
+<span class="sourceLineNo">038</span>                listaEquipos = new ListaEquipos();<a name="line.38"></a>
+<span class="sourceLineNo">039</span>                calendario = new Calendario();<a name="line.39"></a>
+<span class="sourceLineNo">040</span>                Funcionalidad.inicializar(listaEquipos, calendario);<a name="line.40"></a>
+<span class="sourceLineNo">041</span><a name="line.41"></a>
+<span class="sourceLineNo">042</span>                quiniela1 = new Quiniela();<a name="line.42"></a>
+<span class="sourceLineNo">043</span>                quiniela1.identificador = new Date().getTime();<a name="line.43"></a>
+<span class="sourceLineNo">044</span>                quiniela1.nombreApostante = "Apostante1";<a name="line.44"></a>
+<span class="sourceLineNo">045</span>                quiniela1.numApuestasMultiples = 0;<a name="line.45"></a>
+<span class="sourceLineNo">046</span>                quiniela1.numJornada = 0;<a name="line.46"></a>
+<span class="sourceLineNo">047</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.47"></a>
+<span class="sourceLineNo">048</span>                        quiniela1.apuesta[i] = '1';<a name="line.48"></a>
+<span class="sourceLineNo">049</span>                }<a name="line.49"></a>
+<span class="sourceLineNo">050</span><a name="line.50"></a>
+<span class="sourceLineNo">051</span>                quiniela2 = new Quiniela();<a name="line.51"></a>
+<span class="sourceLineNo">052</span>                quiniela2.identificador = new Date().getTime();<a name="line.52"></a>
+<span class="sourceLineNo">053</span>                quiniela2.nombreApostante = "Apostante2";<a name="line.53"></a>
+<span class="sourceLineNo">054</span>                quiniela2.numApuestasMultiples = 1;<a name="line.54"></a>
+<span class="sourceLineNo">055</span>                quiniela2.apuestasMultiples[0] = 8;<a name="line.55"></a>
+<span class="sourceLineNo">056</span>                quiniela2.numJornada = 0;<a name="line.56"></a>
+<span class="sourceLineNo">057</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.57"></a>
+<span class="sourceLineNo">058</span>                        if (i != 8) {<a name="line.58"></a>
+<span class="sourceLineNo">059</span>                                quiniela2.apuesta[i] = '1';<a name="line.59"></a>
+<span class="sourceLineNo">060</span>                        } else {<a name="line.60"></a>
+<span class="sourceLineNo">061</span>                                quiniela2.apuesta[i] = '2';<a name="line.61"></a>
+<span class="sourceLineNo">062</span>                        }<a name="line.62"></a>
+<span class="sourceLineNo">063</span>                }<a name="line.63"></a>
+<span class="sourceLineNo">064</span><a name="line.64"></a>
+<span class="sourceLineNo">065</span>                quiniela3 = new Quiniela();<a name="line.65"></a>
+<span class="sourceLineNo">066</span>                quiniela3.identificador = new Date().getTime();<a name="line.66"></a>
+<span class="sourceLineNo">067</span>                quiniela3.nombreApostante = "Apostante3";<a name="line.67"></a>
+<span class="sourceLineNo">068</span>                quiniela3.numApuestasMultiples = 2;<a name="line.68"></a>
+<span class="sourceLineNo">069</span>                quiniela3.apuestasMultiples[0] = 8;<a name="line.69"></a>
+<span class="sourceLineNo">070</span>                quiniela3.apuestasMultiples[1] = 9;<a name="line.70"></a>
+<span class="sourceLineNo">071</span>                quiniela3.numJornada = 0;<a name="line.71"></a>
+<span class="sourceLineNo">072</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.72"></a>
+<span class="sourceLineNo">073</span>                        if (i != 8 &amp;&amp; i != 9) {<a name="line.73"></a>
+<span class="sourceLineNo">074</span>                                quiniela3.apuesta[i] = '1';<a name="line.74"></a>
+<span class="sourceLineNo">075</span>                        } else if (i == 9) {<a name="line.75"></a>
+<span class="sourceLineNo">076</span>                                quiniela3.apuesta[i] = 'X';<a name="line.76"></a>
+<span class="sourceLineNo">077</span>                        } else {<a name="line.77"></a>
+<span class="sourceLineNo">078</span>                                quiniela3.apuesta[i] = '2';<a name="line.78"></a>
+<span class="sourceLineNo">079</span>                        }<a name="line.79"></a>
+<span class="sourceLineNo">080</span>                }<a name="line.80"></a>
+<span class="sourceLineNo">081</span><a name="line.81"></a>
+<span class="sourceLineNo">082</span>                quiniela4 = new Quiniela();<a name="line.82"></a>
+<span class="sourceLineNo">083</span>                quiniela4.identificador = new Date().getTime();<a name="line.83"></a>
+<span class="sourceLineNo">084</span>                quiniela4.nombreApostante = "Apostante4";<a name="line.84"></a>
+<span class="sourceLineNo">085</span>                quiniela4.numApuestasMultiples = 3;<a name="line.85"></a>
+<span class="sourceLineNo">086</span>                quiniela4.apuestasMultiples[0] = 3;<a name="line.86"></a>
+<span class="sourceLineNo">087</span>                quiniela4.apuestasMultiples[1] = 4;<a name="line.87"></a>
+<span class="sourceLineNo">088</span>                quiniela4.apuestasMultiples[2] = 5;<a name="line.88"></a>
+<span class="sourceLineNo">089</span>                quiniela4.numJornada = 0;<a name="line.89"></a>
+<span class="sourceLineNo">090</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.90"></a>
+<span class="sourceLineNo">091</span>                        char apuesta;<a name="line.91"></a>
+<span class="sourceLineNo">092</span>                        switch (i) {<a name="line.92"></a>
+<span class="sourceLineNo">093</span>                        case 3:<a name="line.93"></a>
+<span class="sourceLineNo">094</span>                        case 4:<a name="line.94"></a>
+<span class="sourceLineNo">095</span>                                apuesta = 'X';<a name="line.95"></a>
+<span class="sourceLineNo">096</span>                                break;<a name="line.96"></a>
+<span class="sourceLineNo">097</span>                        case 5:<a name="line.97"></a>
+<span class="sourceLineNo">098</span>                                apuesta = '2';<a name="line.98"></a>
+<span class="sourceLineNo">099</span>                                break;<a name="line.99"></a>
+<span class="sourceLineNo">100</span>                        default:<a name="line.100"></a>
+<span class="sourceLineNo">101</span>                                apuesta = '1';<a name="line.101"></a>
+<span class="sourceLineNo">102</span>                        }<a name="line.102"></a>
+<span class="sourceLineNo">103</span>                        quiniela4.apuesta[i] = apuesta;<a name="line.103"></a>
+<span class="sourceLineNo">104</span>                }<a name="line.104"></a>
+<span class="sourceLineNo">105</span><a name="line.105"></a>
+<span class="sourceLineNo">106</span>                quiniela5 = new Quiniela();<a name="line.106"></a>
+<span class="sourceLineNo">107</span>                quiniela5.identificador = new Date().getTime();<a name="line.107"></a>
+<span class="sourceLineNo">108</span>                quiniela5.nombreApostante = "Apostante2";<a name="line.108"></a>
+<span class="sourceLineNo">109</span>                quiniela5.numApuestasMultiples = 4;<a name="line.109"></a>
+<span class="sourceLineNo">110</span>                quiniela5.apuestasMultiples[0] = 3;<a name="line.110"></a>
+<span class="sourceLineNo">111</span>                quiniela5.apuestasMultiples[1] = 4;<a name="line.111"></a>
+<span class="sourceLineNo">112</span>                quiniela5.apuestasMultiples[2] = 5;<a name="line.112"></a>
+<span class="sourceLineNo">113</span>                quiniela5.apuestasMultiples[3] = 6;<a name="line.113"></a>
+<span class="sourceLineNo">114</span>                quiniela5.numJornada = 0;<a name="line.114"></a>
+<span class="sourceLineNo">115</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.115"></a>
+<span class="sourceLineNo">116</span>                        char apuesta;<a name="line.116"></a>
+<span class="sourceLineNo">117</span>                        switch (i) {<a name="line.117"></a>
+<span class="sourceLineNo">118</span>                        case 3:<a name="line.118"></a>
+<span class="sourceLineNo">119</span>                        case 4:<a name="line.119"></a>
+<span class="sourceLineNo">120</span>                                apuesta = 'X';<a name="line.120"></a>
+<span class="sourceLineNo">121</span>                                break;<a name="line.121"></a>
+<span class="sourceLineNo">122</span>                        case 5:<a name="line.122"></a>
+<span class="sourceLineNo">123</span>                        case 6:<a name="line.123"></a>
+<span class="sourceLineNo">124</span>                                apuesta = '2';<a name="line.124"></a>
+<span class="sourceLineNo">125</span>                                break;<a name="line.125"></a>
+<span class="sourceLineNo">126</span>                        default:<a name="line.126"></a>
+<span class="sourceLineNo">127</span>                                apuesta = '1';<a name="line.127"></a>
+<span class="sourceLineNo">128</span>                        }<a name="line.128"></a>
+<span class="sourceLineNo">129</span>                        quiniela5.apuesta[i] = apuesta;<a name="line.129"></a>
+<span class="sourceLineNo">130</span>                }<a name="line.130"></a>
+<span class="sourceLineNo">131</span><a name="line.131"></a>
+<span class="sourceLineNo">132</span>                quiniela6 = new Quiniela();<a name="line.132"></a>
+<span class="sourceLineNo">133</span>                quiniela6.identificador = new Date().getTime();<a name="line.133"></a>
+<span class="sourceLineNo">134</span>                quiniela6.nombreApostante = "Apostante2";<a name="line.134"></a>
+<span class="sourceLineNo">135</span>                quiniela6.numApuestasMultiples = 4;<a name="line.135"></a>
+<span class="sourceLineNo">136</span>                quiniela6.apuestasMultiples[0] = 3;<a name="line.136"></a>
+<span class="sourceLineNo">137</span>                quiniela6.apuestasMultiples[1] = 4;<a name="line.137"></a>
+<span class="sourceLineNo">138</span>                quiniela6.apuestasMultiples[2] = 5;<a name="line.138"></a>
+<span class="sourceLineNo">139</span>                quiniela6.apuestasMultiples[3] = 6;<a name="line.139"></a>
+<span class="sourceLineNo">140</span>                quiniela6.numJornada = 0;<a name="line.140"></a>
+<span class="sourceLineNo">141</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.141"></a>
+<span class="sourceLineNo">142</span>                        char apuesta;<a name="line.142"></a>
+<span class="sourceLineNo">143</span>                        switch (i) {<a name="line.143"></a>
+<span class="sourceLineNo">144</span>                        case 3:<a name="line.144"></a>
+<span class="sourceLineNo">145</span>                        case 4:<a name="line.145"></a>
+<span class="sourceLineNo">146</span>                        case 7:<a name="line.146"></a>
+<span class="sourceLineNo">147</span>                                apuesta = 'X';<a name="line.147"></a>
+<span class="sourceLineNo">148</span>                                break;<a name="line.148"></a>
+<span class="sourceLineNo">149</span>                        case 5:<a name="line.149"></a>
+<span class="sourceLineNo">150</span>                        case 6:<a name="line.150"></a>
+<span class="sourceLineNo">151</span>                                apuesta = '2';<a name="line.151"></a>
+<span class="sourceLineNo">152</span>                                break;<a name="line.152"></a>
+<span class="sourceLineNo">153</span>                        default:<a name="line.153"></a>
+<span class="sourceLineNo">154</span>                                apuesta = '1';<a name="line.154"></a>
+<span class="sourceLineNo">155</span>                        }<a name="line.155"></a>
+<span class="sourceLineNo">156</span>                        quiniela6.apuesta[i] = apuesta;<a name="line.156"></a>
+<span class="sourceLineNo">157</span>                }<a name="line.157"></a>
+<span class="sourceLineNo">158</span><a name="line.158"></a>
+<span class="sourceLineNo">159</span>                quiniela7 = new Quiniela();<a name="line.159"></a>
+<span class="sourceLineNo">160</span>                quiniela7.identificador = new Date().getTime();<a name="line.160"></a>
+<span class="sourceLineNo">161</span>                quiniela7.nombreApostante = "Apostante2";<a name="line.161"></a>
+<span class="sourceLineNo">162</span>                quiniela7.numApuestasMultiples = 4;<a name="line.162"></a>
+<span class="sourceLineNo">163</span>                quiniela7.apuestasMultiples[0] = 3;<a name="line.163"></a>
+<span class="sourceLineNo">164</span>                quiniela7.apuestasMultiples[1] = 4;<a name="line.164"></a>
+<span class="sourceLineNo">165</span>                quiniela7.apuestasMultiples[2] = 5;<a name="line.165"></a>
+<span class="sourceLineNo">166</span>                quiniela7.apuestasMultiples[3] = 6;<a name="line.166"></a>
+<span class="sourceLineNo">167</span>                quiniela7.numJornada = 0;<a name="line.167"></a>
+<span class="sourceLineNo">168</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.168"></a>
+<span class="sourceLineNo">169</span>                        char apuesta;<a name="line.169"></a>
+<span class="sourceLineNo">170</span>                        switch (i) {<a name="line.170"></a>
+<span class="sourceLineNo">171</span>                        case 3:<a name="line.171"></a>
+<span class="sourceLineNo">172</span>                        case 4:<a name="line.172"></a>
+<span class="sourceLineNo">173</span>                        case 5:<a name="line.173"></a>
+<span class="sourceLineNo">174</span>                        case 7:<a name="line.174"></a>
+<span class="sourceLineNo">175</span>                                apuesta = 'X';<a name="line.175"></a>
+<span class="sourceLineNo">176</span>                                break;<a name="line.176"></a>
+<span class="sourceLineNo">177</span>                        case 6:<a name="line.177"></a>
+<span class="sourceLineNo">178</span>                                apuesta = '2';<a name="line.178"></a>
+<span class="sourceLineNo">179</span>                                break;<a name="line.179"></a>
+<span class="sourceLineNo">180</span>                        default:<a name="line.180"></a>
+<span class="sourceLineNo">181</span>                                apuesta = '1';<a name="line.181"></a>
+<span class="sourceLineNo">182</span>                        }<a name="line.182"></a>
+<span class="sourceLineNo">183</span>                        quiniela7.apuesta[i] = apuesta;<a name="line.183"></a>
+<span class="sourceLineNo">184</span>                }<a name="line.184"></a>
+<span class="sourceLineNo">185</span><a name="line.185"></a>
+<span class="sourceLineNo">186</span>                quiniela8 = new Quiniela();<a name="line.186"></a>
+<span class="sourceLineNo">187</span>                quiniela8.identificador = new Date().getTime();<a name="line.187"></a>
+<span class="sourceLineNo">188</span>                quiniela8.nombreApostante = "Apostante2";<a name="line.188"></a>
+<span class="sourceLineNo">189</span>                quiniela8.numApuestasMultiples = 0;<a name="line.189"></a>
+<span class="sourceLineNo">190</span>                quiniela8.numJornada = 0;<a name="line.190"></a>
+<span class="sourceLineNo">191</span>                for (int i = 0; i &lt; Constantes.PARTIDOS; i++) {<a name="line.191"></a>
+<span class="sourceLineNo">192</span>                        char apuesta;<a name="line.192"></a>
+<span class="sourceLineNo">193</span>                        switch (i) {<a name="line.193"></a>
+<span class="sourceLineNo">194</span>                        case 5:<a name="line.194"></a>
+<span class="sourceLineNo">195</span>                        case 7:<a name="line.195"></a>
+<span class="sourceLineNo">196</span>                                apuesta = 'X';<a name="line.196"></a>
+<span class="sourceLineNo">197</span>                                break;<a name="line.197"></a>
+<span class="sourceLineNo">198</span>                        case 6:<a name="line.198"></a>
+<span class="sourceLineNo">199</span>                                apuesta = '2';<a name="line.199"></a>
+<span class="sourceLineNo">200</span>                                break;<a name="line.200"></a>
+<span class="sourceLineNo">201</span>                        default:<a name="line.201"></a>
+<span class="sourceLineNo">202</span>                                apuesta = '1';<a name="line.202"></a>
+<span class="sourceLineNo">203</span>                        }<a name="line.203"></a>
+<span class="sourceLineNo">204</span>                        quiniela8.apuesta[i] = apuesta;<a name="line.204"></a>
+<span class="sourceLineNo">205</span>                }<a name="line.205"></a>
+<span class="sourceLineNo">206</span><a name="line.206"></a>
+<span class="sourceLineNo">207</span>                quinielasPruebas = new Quiniela[] { quiniela1, quiniela2, quiniela3,<a name="line.207"></a>
+<span class="sourceLineNo">208</span>                                quiniela4, quiniela5, quiniela6, quiniela7, quiniela8 };<a name="line.208"></a>
+<span class="sourceLineNo">209</span>                <a name="line.209"></a>
+<span class="sourceLineNo">210</span>                administracionApuestas = new AdministracionApuestas();<a name="line.210"></a>
+<span class="sourceLineNo">211</span>        }<a name="line.211"></a>
+<span class="sourceLineNo">212</span><a name="line.212"></a>
+<span class="sourceLineNo">213</span>        /**<a name="line.213"></a>
+<span class="sourceLineNo">214</span>         * Inicializa los resultados para realizar comprobaciones<a name="line.214"></a>
+<span class="sourceLineNo">215</span>         * <a name="line.215"></a>
+<span class="sourceLineNo">216</span>         * @return devuelve los resultados inicializados<a name="line.216"></a>
+<span class="sourceLineNo">217</span>         */<a name="line.217"></a>
+<span class="sourceLineNo">218</span>        private Resultados inicializarResultados() {<a name="line.218"></a>
+<span class="sourceLineNo">219</span>                Resultados res = new Resultados();<a name="line.219"></a>
+<span class="sourceLineNo">220</span>                res.resultados = new Resultado[Constantes.EQUIPOS][Constantes.EQUIPOS];<a name="line.220"></a>
+<span class="sourceLineNo">221</span><a name="line.221"></a>
+<span class="sourceLineNo">222</span>                res.resultados[10][4] = new Resultado();<a name="line.222"></a>
+<span class="sourceLineNo">223</span>                res.resultados[10][4].golesLocal = 3;<a name="line.223"></a>
+<span class="sourceLineNo">224</span>                res.resultados[10][4].golesVisitante = 2;<a name="line.224"></a>
+<span class="sourceLineNo">225</span><a name="line.225"></a>
+<span class="sourceLineNo">226</span>                res.resultados[3][13] = new Resultado();<a name="line.226"></a>
+<span class="sourceLineNo">227</span>                res.resultados[3][13].golesLocal = 3;<a name="line.227"></a>
+<span class="sourceLineNo">228</span>                res.resultados[3][13].golesVisitante = 0;<a name="line.228"></a>
+<span class="sourceLineNo">229</span><a name="line.229"></a>
+<span class="sourceLineNo">230</span>                res.resultados[7][2] = new Resultado();<a name="line.230"></a>
+<span class="sourceLineNo">231</span>                res.resultados[7][2].golesLocal = 3;<a name="line.231"></a>
+<span class="sourceLineNo">232</span>                res.resultados[7][2].golesVisitante = 0;<a name="line.232"></a>
+<span class="sourceLineNo">233</span><a name="line.233"></a>
+<span class="sourceLineNo">234</span>                res.resultados[15][12] = new Resultado();<a name="line.234"></a>
+<span class="sourceLineNo">235</span>                res.resultados[15][12].golesLocal = 2;<a name="line.235"></a>
+<span class="sourceLineNo">236</span>                res.resultados[15][12].golesVisitante = 0;<a name="line.236"></a>
+<span class="sourceLineNo">237</span><a name="line.237"></a>
+<span class="sourceLineNo">238</span>                res.resultados[8][18] = new Resultado();<a name="line.238"></a>
+<span class="sourceLineNo">239</span>                res.resultados[8][18].golesLocal = 2;<a name="line.239"></a>
+<span class="sourceLineNo">240</span>                res.resultados[8][18].golesVisitante = 0;<a name="line.240"></a>
+<span class="sourceLineNo">241</span><a name="line.241"></a>
+<span class="sourceLineNo">242</span>                res.resultados[0][16] = new Resultado();<a name="line.242"></a>
+<span class="sourceLineNo">243</span>                res.resultados[0][16].golesLocal = 0;<a name="line.243"></a>
+<span class="sourceLineNo">244</span>                res.resultados[0][16].golesVisitante = 0;<a name="line.244"></a>
+<span class="sourceLineNo">245</span><a name="line.245"></a>
+<span class="sourceLineNo">246</span>                res.resultados[11][6] = new Resultado();<a name="line.246"></a>
+<span class="sourceLineNo">247</span>                res.resultados[11][6].golesLocal = 1;<a name="line.247"></a>
+<span class="sourceLineNo">248</span>                res.resultados[11][6].golesVisitante = 4;<a name="line.248"></a>
+<span class="sourceLineNo">249</span><a name="line.249"></a>
+<span class="sourceLineNo">250</span>                res.resultados[9][17] = new Resultado();<a name="line.250"></a>
+<span class="sourceLineNo">251</span>                res.resultados[9][17].golesLocal = 1;<a name="line.251"></a>
+<span class="sourceLineNo">252</span>                res.resultados[9][17].golesVisitante = 1;<a name="line.252"></a>
+<span class="sourceLineNo">253</span><a name="line.253"></a>
+<span class="sourceLineNo">254</span>                res.resultados[19][14] = new Resultado();<a name="line.254"></a>
+<span class="sourceLineNo">255</span>                res.resultados[19][14].golesLocal = 1;<a name="line.255"></a>
+<span class="sourceLineNo">256</span>                res.resultados[19][14].golesVisitante = 0;<a name="line.256"></a>
+<span class="sourceLineNo">257</span><a name="line.257"></a>
+<span class="sourceLineNo">258</span>                res.resultados[1][5] = new Resultado();<a name="line.258"></a>
+<span class="sourceLineNo">259</span>                res.resultados[1][5].golesLocal = 1;<a name="line.259"></a>
+<span class="sourceLineNo">260</span>                res.resultados[1][5].golesVisitante = 0;<a name="line.260"></a>
+<span class="sourceLineNo">261</span><a name="line.261"></a>
+<span class="sourceLineNo">262</span>                return res;<a name="line.262"></a>
+<span class="sourceLineNo">263</span>        }<a name="line.263"></a>
+<span class="sourceLineNo">264</span><a name="line.264"></a>
+<span class="sourceLineNo">265</span>        /**<a name="line.265"></a>
+<span class="sourceLineNo">266</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.266"></a>
+<span class="sourceLineNo">267</span>         * {@link packFuncionalidad.FuncionalidadPractica#addApuestaMultiple(Quiniela, int)}<a name="line.267"></a>
+<span class="sourceLineNo">268</span>         */<a name="line.268"></a>
+<span class="sourceLineNo">269</span>        public void testAddApuestaMultiple() {<a name="line.269"></a>
+<span class="sourceLineNo">270</span>                // Comprobar partido correcto<a name="line.270"></a>
+<span class="sourceLineNo">271</span>                assertFalse("No se comprueba que el partido sea válido",<a name="line.271"></a>
+<span class="sourceLineNo">272</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, -1));<a name="line.272"></a>
+<span class="sourceLineNo">273</span>                assertFalse("No se comprueba que el partido sea válido",<a name="line.273"></a>
+<span class="sourceLineNo">274</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 14));<a name="line.274"></a>
+<span class="sourceLineNo">275</span><a name="line.275"></a>
+<span class="sourceLineNo">276</span>                // Comrpobar que las apuestas múltiples se realizan bien<a name="line.276"></a>
+<span class="sourceLineNo">277</span>                assertTrue("No permite realizar una apuesta múltiple",<a name="line.277"></a>
+<span class="sourceLineNo">278</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 0));<a name="line.278"></a>
+<span class="sourceLineNo">279</span>                assertEquals(<a name="line.279"></a>
+<span class="sourceLineNo">280</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.280"></a>
+<span class="sourceLineNo">281</span>                                0, quiniela1.apuestasMultiples[0]);<a name="line.281"></a>
+<span class="sourceLineNo">282</span>                assertEquals(<a name="line.282"></a>
+<span class="sourceLineNo">283</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.283"></a>
+<span class="sourceLineNo">284</span>                                1, quiniela1.numApuestasMultiples);<a name="line.284"></a>
+<span class="sourceLineNo">285</span>                assertTrue("No permite realizar una apuesta múltiple",<a name="line.285"></a>
+<span class="sourceLineNo">286</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 1));<a name="line.286"></a>
+<span class="sourceLineNo">287</span>                assertEquals(<a name="line.287"></a>
+<span class="sourceLineNo">288</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.288"></a>
+<span class="sourceLineNo">289</span>                                1, quiniela1.apuestasMultiples[1]);<a name="line.289"></a>
+<span class="sourceLineNo">290</span>                assertEquals(<a name="line.290"></a>
+<span class="sourceLineNo">291</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.291"></a>
+<span class="sourceLineNo">292</span>                                2, quiniela1.numApuestasMultiples);<a name="line.292"></a>
+<span class="sourceLineNo">293</span>                assertTrue("No permite realizar una apuesta múltiple",<a name="line.293"></a>
+<span class="sourceLineNo">294</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 2));<a name="line.294"></a>
+<span class="sourceLineNo">295</span>                assertEquals(<a name="line.295"></a>
+<span class="sourceLineNo">296</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.296"></a>
+<span class="sourceLineNo">297</span>                                2, quiniela1.apuestasMultiples[2]);<a name="line.297"></a>
+<span class="sourceLineNo">298</span>                assertEquals(<a name="line.298"></a>
+<span class="sourceLineNo">299</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.299"></a>
+<span class="sourceLineNo">300</span>                                3, quiniela1.numApuestasMultiples);<a name="line.300"></a>
+<span class="sourceLineNo">301</span>                // Comprobar que no se realizan apuestas múltiples repetidas<a name="line.301"></a>
+<span class="sourceLineNo">302</span>                assertFalse(<a name="line.302"></a>
+<span class="sourceLineNo">303</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.303"></a>
+<span class="sourceLineNo">304</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 0));<a name="line.304"></a>
+<span class="sourceLineNo">305</span>                assertEquals(<a name="line.305"></a>
+<span class="sourceLineNo">306</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.306"></a>
+<span class="sourceLineNo">307</span>                                3, quiniela1.numApuestasMultiples);<a name="line.307"></a>
+<span class="sourceLineNo">308</span>                assertFalse(<a name="line.308"></a>
+<span class="sourceLineNo">309</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.309"></a>
+<span class="sourceLineNo">310</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 1));<a name="line.310"></a>
+<span class="sourceLineNo">311</span>                assertEquals(<a name="line.311"></a>
+<span class="sourceLineNo">312</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.312"></a>
+<span class="sourceLineNo">313</span>                                3, quiniela1.numApuestasMultiples);<a name="line.313"></a>
+<span class="sourceLineNo">314</span>                assertFalse(<a name="line.314"></a>
+<span class="sourceLineNo">315</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.315"></a>
+<span class="sourceLineNo">316</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 2));<a name="line.316"></a>
+<span class="sourceLineNo">317</span>                assertEquals(<a name="line.317"></a>
+<span class="sourceLineNo">318</span>                                "No controla que ya se haya realizado una apuesta múltiple para un partido",<a name="line.318"></a>
+<span class="sourceLineNo">319</span>                                3, quiniela1.numApuestasMultiples);<a name="line.319"></a>
+<span class="sourceLineNo">320</span>                // Comprobar que no se hacen apuestas de más<a name="line.320"></a>
+<span class="sourceLineNo">321</span>                assertTrue("No permite realizar una apuesta múltiple",<a name="line.321"></a>
+<span class="sourceLineNo">322</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 3));<a name="line.322"></a>
+<span class="sourceLineNo">323</span>                assertEquals(<a name="line.323"></a>
+<span class="sourceLineNo">324</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.324"></a>
+<span class="sourceLineNo">325</span>                                3, quiniela1.apuestasMultiples[3]);<a name="line.325"></a>
+<span class="sourceLineNo">326</span>                assertEquals(<a name="line.326"></a>
+<span class="sourceLineNo">327</span>                                "No se guarda adecuadamente el partido en el que se realiza la apuesta múltiple",<a name="line.327"></a>
+<span class="sourceLineNo">328</span>                                4, quiniela1.numApuestasMultiples);<a name="line.328"></a>
+<span class="sourceLineNo">329</span>                assertFalse(<a name="line.329"></a>
+<span class="sourceLineNo">330</span>                                "No controla que se hayan realizado todas las apuestas múltiples posibles",<a name="line.330"></a>
+<span class="sourceLineNo">331</span>                                FuncionalidadPractica.addApuestaMultiple(quiniela1, 4));<a name="line.331"></a>
+<span class="sourceLineNo">332</span>                assertEquals(<a name="line.332"></a>
+<span class="sourceLineNo">333</span>                                "No controla que se hayan realizado todas las apuestas múltiples posibles",<a name="line.333"></a>
+<span class="sourceLineNo">334</span>                                4, quiniela1.numApuestasMultiples);<a name="line.334"></a>
+<span class="sourceLineNo">335</span><a name="line.335"></a>
+<span class="sourceLineNo">336</span>        }<a name="line.336"></a>
+<span class="sourceLineNo">337</span><a name="line.337"></a>
+<span class="sourceLineNo">338</span>        /**<a name="line.338"></a>
+<span class="sourceLineNo">339</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.339"></a>
+<span class="sourceLineNo">340</span>         * {@link packFuncionalidad.FuncionalidadPractica#realizarApuestaPartido(Quiniela, int,char)}<a name="line.340"></a>
+<span class="sourceLineNo">341</span>         */<a name="line.341"></a>
+<span class="sourceLineNo">342</span>        public void testRealizarApuestaPartido() {<a name="line.342"></a>
+<span class="sourceLineNo">343</span>                // Apuesta incorrecta<a name="line.343"></a>
+<span class="sourceLineNo">344</span>                assertFalse("No se comprueba que la apuesta sea un caracter válido",<a name="line.344"></a>
+<span class="sourceLineNo">345</span>                                FuncionalidadPractica.realizarApuestaPartido(quiniela5, 0, 'a'));<a name="line.345"></a>
+<span class="sourceLineNo">346</span>                assertFalse("Se ha realizada la apuesta con un caracter no válido",<a name="line.346"></a>
+<span class="sourceLineNo">347</span>                                quiniela5.apuesta[0] == 'a');<a name="line.347"></a>
+<span class="sourceLineNo">348</span>                // Partido incorrecto<a name="line.348"></a>
+<span class="sourceLineNo">349</span>                assertFalse("No se comprueba que el partido sea válido",<a name="line.349"></a>
+<span class="sourceLineNo">350</span>                                FuncionalidadPractica<a name="line.350"></a>
+<span class="sourceLineNo">351</span>                                                .realizarApuestaPartido(quiniela5, -1, '1'));<a name="line.351"></a>
+<span class="sourceLineNo">352</span>                assertFalse("No se comprueba que el partido sea válido",<a name="line.352"></a>
+<span class="sourceLineNo">353</span>                                FuncionalidadPractica<a name="line.353"></a>
+<span class="sourceLineNo">354</span>                                                .realizarApuestaPartido(quiniela5, 14, '1'));<a name="line.354"></a>
+<span class="sourceLineNo">355</span>                // Apuesta múltiple<a name="line.355"></a>
+<span class="sourceLineNo">356</span>                assertFalse(<a name="line.356"></a>
+<span class="sourceLineNo">357</span>                                "Se permite apostar (1) en un partido en el que se ha realizado apuesta múltiple",<a name="line.357"></a>
+<span class="sourceLineNo">358</span>                                FuncionalidadPractica.realizarApuestaPartido(quiniela5, 6, '1'));<a name="line.358"></a>
+<span class="sourceLineNo">359</span>                // Apuesta correcta<a name="line.359"></a>
+<span class="sourceLineNo">360</span>                assertTrue("Falla al realizar una apuesta correcta (1)",<a name="line.360"></a>
+<span class="sourceLineNo">361</span>                                FuncionalidadPractica.realizarApuestaPartido(quiniela5, 9, '1'));<a name="line.361"></a>
+<span class="sourceLineNo">362</span>                assertEquals("No guarda la apuesta adecuadamente", '1',<a name="line.362"></a>
+<span class="sourceLineNo">363</span>                                quiniela5.apuesta[9]);<a name="line.363"></a>
+<span class="sourceLineNo">364</span>                assertTrue("Falla al realizar una apuesta correcta (2)",<a name="line.364"></a>
+<span class="sourceLineNo">365</span>                                FuncionalidadPractica.realizarApuestaPartido(quiniela5, 6, '2'));<a name="line.365"></a>
+<span class="sourceLineNo">366</span>                assertEquals("No guarda la apuesta adecuadamente", '2',<a name="line.366"></a>
+<span class="sourceLineNo">367</span>                                quiniela5.apuesta[6]);<a name="line.367"></a>
+<span class="sourceLineNo">368</span>                assertTrue("Falla al realizar una apuesta correcta (X)",<a name="line.368"></a>
+<span class="sourceLineNo">369</span>                                FuncionalidadPractica.realizarApuestaPartido(quiniela5, 3, 'X'));<a name="line.369"></a>
+<span class="sourceLineNo">370</span>                assertEquals("No guarda la apuesta adecuadamente", 'X',<a name="line.370"></a>
+<span class="sourceLineNo">371</span>                                quiniela5.apuesta[3]);<a name="line.371"></a>
+<span class="sourceLineNo">372</span>        }<a name="line.372"></a>
+<span class="sourceLineNo">373</span><a name="line.373"></a>
+<span class="sourceLineNo">374</span>        /**<a name="line.374"></a>
+<span class="sourceLineNo">375</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.375"></a>
+<span class="sourceLineNo">376</span>         * {@link packFuncionalidad.FuncionalidadPractica#calcularPrecioQuiniela(Quiniela)}<a name="line.376"></a>
+<span class="sourceLineNo">377</span>         */<a name="line.377"></a>
+<span class="sourceLineNo">378</span>        public void testCalcularPrecioQuiniela() {<a name="line.378"></a>
+<span class="sourceLineNo">379</span>                assertEquals("No se calcula bien el precio de la quiniela", 1.5f,<a name="line.379"></a>
+<span class="sourceLineNo">380</span>                                FuncionalidadPractica.calcularPrecioQuiniela(quiniela1));<a name="line.380"></a>
+<span class="sourceLineNo">381</span>                assertEquals(<a name="line.381"></a>
+<span class="sourceLineNo">382</span>                                "No se calcula bien el precio de la quiniela con apuestas múltiples",<a name="line.382"></a>
+<span class="sourceLineNo">383</span>                                2f, FuncionalidadPractica.calcularPrecioQuiniela(quiniela2));<a name="line.383"></a>
+<span class="sourceLineNo">384</span>                assertEquals(<a name="line.384"></a>
+<span class="sourceLineNo">385</span>                                "No se calcula bien el precio de la quiniela con apuestas múltiples",<a name="line.385"></a>
+<span class="sourceLineNo">386</span>                                2.5f, FuncionalidadPractica.calcularPrecioQuiniela(quiniela3));<a name="line.386"></a>
+<span class="sourceLineNo">387</span>                assertEquals(<a name="line.387"></a>
+<span class="sourceLineNo">388</span>                                "No se calcula bien el precio de la quiniela con apuestas múltiples",<a name="line.388"></a>
+<span class="sourceLineNo">389</span>                                3f, FuncionalidadPractica.calcularPrecioQuiniela(quiniela4));<a name="line.389"></a>
+<span class="sourceLineNo">390</span>                assertEquals(<a name="line.390"></a>
+<span class="sourceLineNo">391</span>                                "No se calcula bien el precio de la quiniela con apuestas múltiples",<a name="line.391"></a>
+<span class="sourceLineNo">392</span>                                3.5f, FuncionalidadPractica.calcularPrecioQuiniela(quiniela5));<a name="line.392"></a>
+<span class="sourceLineNo">393</span>        }<a name="line.393"></a>
+<span class="sourceLineNo">394</span><a name="line.394"></a>
+<span class="sourceLineNo">395</span>        /**<a name="line.395"></a>
+<span class="sourceLineNo">396</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.396"></a>
+<span class="sourceLineNo">397</span>         * {@link packFuncionalidad.FuncionalidadPractica#calcularPremiosAcertantes(Calendario,ListaEquipos, Resultados,AdministracionApuestas, int)}<a name="line.397"></a>
+<span class="sourceLineNo">398</span>         */<a name="line.398"></a>
+<span class="sourceLineNo">399</span>        public void testSellarApuesta() {<a name="line.399"></a>
+<span class="sourceLineNo">400</span>                float recaudacion = 21.0f;<a name="line.400"></a>
+<span class="sourceLineNo">401</span><a name="line.401"></a>
+<span class="sourceLineNo">402</span>                // Probar sellar con las quinielas<a name="line.402"></a>
+<span class="sourceLineNo">403</span>                assertEquals("Sellar no devuelve el precio correcto", 1.5f,<a name="line.403"></a>
+<span class="sourceLineNo">404</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela1));<a name="line.404"></a>
+<span class="sourceLineNo">405</span>                assertEquals("Sellar no devuelve el precio correcto", 2f,<a name="line.405"></a>
+<span class="sourceLineNo">406</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela2));<a name="line.406"></a>
+<span class="sourceLineNo">407</span>                assertEquals("Sellar no devuelve el precio correcto", 2.5f,<a name="line.407"></a>
+<span class="sourceLineNo">408</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela3));<a name="line.408"></a>
+<span class="sourceLineNo">409</span>                assertEquals("Sellar no devuelve el precio correcto", 3f,<a name="line.409"></a>
+<span class="sourceLineNo">410</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela4));<a name="line.410"></a>
+<span class="sourceLineNo">411</span>                assertEquals("Sellar no devuelve el precio correcto", 3.5f,<a name="line.411"></a>
+<span class="sourceLineNo">412</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela5));<a name="line.412"></a>
+<span class="sourceLineNo">413</span>                assertEquals("Sellar no devuelve el precio correcto", 3.5f,<a name="line.413"></a>
+<span class="sourceLineNo">414</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela6));<a name="line.414"></a>
+<span class="sourceLineNo">415</span>                assertEquals("Sellar no devuelve el precio correcto", 3.5f,<a name="line.415"></a>
+<span class="sourceLineNo">416</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela7));<a name="line.416"></a>
+<span class="sourceLineNo">417</span>                assertEquals("Sellar no devuelve el precio correcto", 1.5f,<a name="line.417"></a>
+<span class="sourceLineNo">418</span>                                FuncionalidadPractica.sellarApuesta(administracionApuestas,quiniela8));<a name="line.418"></a>
+<span class="sourceLineNo">419</span><a name="line.419"></a>
+<span class="sourceLineNo">420</span>                // Comprobar que sellar soporta añadir todas las quinielas que haga<a name="line.420"></a>
+<span class="sourceLineNo">421</span>                // falta<a name="line.421"></a>
+<span class="sourceLineNo">422</span><a name="line.422"></a>
+<span class="sourceLineNo">423</span>        for (int i = 8; i &lt; NUM_ELEMENTS; i++) {<a name="line.423"></a>
+<span class="sourceLineNo">424</span>                        assertEquals("Sellar no devuelve el precio correcto", 1.5f,<a name="line.424"></a>
+<span class="sourceLineNo">425</span>                                        FuncionalidadPractica<a name="line.425"></a>
+<span class="sourceLineNo">426</span>                                                        .sellarApuesta(administracionApuestas, new Quiniela()));<a name="line.426"></a>
+<span class="sourceLineNo">427</span>                        recaudacion += 1.5f;<a name="line.427"></a>
+<span class="sourceLineNo">428</span>                        PremiosAcertantes premios = FuncionalidadPractica<a name="line.428"></a>
+<span class="sourceLineNo">429</span>                                        .calcularPremiosAcertantes(calendario, listaEquipos,<a name="line.429"></a>
+<span class="sourceLineNo">430</span>                                                        resultados, administracionApuestas, 0);<a name="line.430"></a>
+<span class="sourceLineNo">431</span>                        assertEquals("El premio para los acertantes de 10 no es correcto",<a name="line.431"></a>
+<span class="sourceLineNo">432</span>                                        recaudacion * 0.2f, premios.premio10Aciertos, 0.01f);<a name="line.432"></a>
+<span class="sourceLineNo">433</span>                        assertEquals("El premio para los acertantes de 9 no es correcto",<a name="line.433"></a>
+<span class="sourceLineNo">434</span>                                        recaudacion * 0.2f, premios.premio9Aciertos, 0.01f);<a name="line.434"></a>
+<span class="sourceLineNo">435</span>                        assertEquals("El premio para los acertantes de 8 no es correcto",<a name="line.435"></a>
+<span class="sourceLineNo">436</span>                                        recaudacion * 0.1f, premios.premio8Aciertos, 0.01f);<a name="line.436"></a>
+<span class="sourceLineNo">437</span><a name="line.437"></a>
+<span class="sourceLineNo">438</span>                }<a name="line.438"></a>
+<span class="sourceLineNo">439</span>        }<a name="line.439"></a>
+<span class="sourceLineNo">440</span><a name="line.440"></a>
+<span class="sourceLineNo">441</span>        public void testCalcularNumeroAciertos() {<a name="line.441"></a>
+<span class="sourceLineNo">442</span>                assertEquals("No se calculan bien los aciertos", 7,<a name="line.442"></a>
+<span class="sourceLineNo">443</span>                                FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.443"></a>
+<span class="sourceLineNo">444</span>                                                resultados, listaEquipos, quiniela1));<a name="line.444"></a>
+<span class="sourceLineNo">445</span>                assertEquals(<a name="line.445"></a>
+<span class="sourceLineNo">446</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.446"></a>
+<span class="sourceLineNo">447</span>                                7, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.447"></a>
+<span class="sourceLineNo">448</span>                                                resultados, listaEquipos, quiniela2));<a name="line.448"></a>
+<span class="sourceLineNo">449</span>                assertEquals(<a name="line.449"></a>
+<span class="sourceLineNo">450</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.450"></a>
+<span class="sourceLineNo">451</span>                                7, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.451"></a>
+<span class="sourceLineNo">452</span>                                                resultados, listaEquipos, quiniela3));<a name="line.452"></a>
+<span class="sourceLineNo">453</span>                assertEquals(<a name="line.453"></a>
+<span class="sourceLineNo">454</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.454"></a>
+<span class="sourceLineNo">455</span>                                7, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.455"></a>
+<span class="sourceLineNo">456</span>                                                resultados, listaEquipos, quiniela4));<a name="line.456"></a>
+<span class="sourceLineNo">457</span>                assertEquals(<a name="line.457"></a>
+<span class="sourceLineNo">458</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.458"></a>
+<span class="sourceLineNo">459</span>                                8, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.459"></a>
+<span class="sourceLineNo">460</span>                                                resultados, listaEquipos, quiniela5));<a name="line.460"></a>
+<span class="sourceLineNo">461</span>                assertEquals(<a name="line.461"></a>
+<span class="sourceLineNo">462</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.462"></a>
+<span class="sourceLineNo">463</span>                                9, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.463"></a>
+<span class="sourceLineNo">464</span>                                                resultados, listaEquipos, quiniela6));<a name="line.464"></a>
+<span class="sourceLineNo">465</span><a name="line.465"></a>
+<span class="sourceLineNo">466</span>                assertEquals(<a name="line.466"></a>
+<span class="sourceLineNo">467</span>                                "No se calculan bien los aciertos con las apuestas múltiples",<a name="line.467"></a>
+<span class="sourceLineNo">468</span>                                10, FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.468"></a>
+<span class="sourceLineNo">469</span>                                                resultados, listaEquipos, quiniela7));<a name="line.469"></a>
+<span class="sourceLineNo">470</span><a name="line.470"></a>
+<span class="sourceLineNo">471</span>                assertEquals("No se calculan bien los aciertos", 10,<a name="line.471"></a>
+<span class="sourceLineNo">472</span>                                FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.472"></a>
+<span class="sourceLineNo">473</span>                                                resultados, listaEquipos, quiniela8));<a name="line.473"></a>
+<span class="sourceLineNo">474</span>                quiniela1.apuesta = new char[Constantes.PARTIDOS];<a name="line.474"></a>
+<span class="sourceLineNo">475</span>                assertEquals("No se calculan bien los aciertos", 0,<a name="line.475"></a>
+<span class="sourceLineNo">476</span>                                FuncionalidadPractica.calcularNumeroAciertos(calendario,<a name="line.476"></a>
+<span class="sourceLineNo">477</span>                                                resultados, listaEquipos, quiniela1));<a name="line.477"></a>
+<span class="sourceLineNo">478</span>        }<a name="line.478"></a>
+<span class="sourceLineNo">479</span><a name="line.479"></a>
+<span class="sourceLineNo">480</span>        /**<a name="line.480"></a>
+<span class="sourceLineNo">481</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.481"></a>
+<span class="sourceLineNo">482</span>         * {@link packFuncionalidad.FuncionalidadPractica#calcularPremiosAcertantes(Calendario,ListaEquipos, Resultados,AdministracionApuestas, int)}<a name="line.482"></a>
+<span class="sourceLineNo">483</span>         */<a name="line.483"></a>
+<span class="sourceLineNo">484</span>        public void testCalcularPremiosAcertantes() {<a name="line.484"></a>
+<span class="sourceLineNo">485</span>                for (Quiniela quiniela : quinielasPruebas) {<a name="line.485"></a>
+<span class="sourceLineNo">486</span>                        FuncionalidadPractica.sellarApuesta(administracionApuestas,<a name="line.486"></a>
+<span class="sourceLineNo">487</span>                                        quiniela);<a name="line.487"></a>
+<span class="sourceLineNo">488</span>                }<a name="line.488"></a>
+<span class="sourceLineNo">489</span><a name="line.489"></a>
+<span class="sourceLineNo">490</span>                // Jornadas incorrectas<a name="line.490"></a>
+<span class="sourceLineNo">491</span>                assertNull("No se comprueba que la jornada sea correcta",<a name="line.491"></a>
+<span class="sourceLineNo">492</span>                                FuncionalidadPractica.calcularPremiosAcertantes(calendario,<a name="line.492"></a>
+<span class="sourceLineNo">493</span>                                                listaEquipos, resultados, administracionApuestas, -1));<a name="line.493"></a>
+<span class="sourceLineNo">494</span><a name="line.494"></a>
+<span class="sourceLineNo">495</span>                assertNull("No se comprueba que la jornada sea correcta",<a name="line.495"></a>
+<span class="sourceLineNo">496</span>                                FuncionalidadPractica.calcularPremiosAcertantes(calendario,<a name="line.496"></a>
+<span class="sourceLineNo">497</span>                                                listaEquipos, resultados, administracionApuestas,<a name="line.497"></a>
+<span class="sourceLineNo">498</span>                                                Constantes.JORNADAS));<a name="line.498"></a>
+<span class="sourceLineNo">499</span><a name="line.499"></a>
+<span class="sourceLineNo">500</span>                // Jornada correcta<a name="line.500"></a>
+<span class="sourceLineNo">501</span>                PremiosAcertantes premios = FuncionalidadPractica<a name="line.501"></a>
+<span class="sourceLineNo">502</span>                                .calcularPremiosAcertantes(calendario, listaEquipos,<a name="line.502"></a>
+<span class="sourceLineNo">503</span>                                                resultados, administracionApuestas, 0);<a name="line.503"></a>
+<span class="sourceLineNo">504</span>                assertNotNull("No se crea el reparto de premios", premios);<a name="line.504"></a>
+<span class="sourceLineNo">505</span>                assertEquals("El premio para los acertantes de 10 no es correcto",<a name="line.505"></a>
+<span class="sourceLineNo">506</span>                                4.2f, premios.premio10Aciertos, 0.01f);<a name="line.506"></a>
+<span class="sourceLineNo">507</span>                assertEquals("El premio para los acertantes de 9 no es correcto", 4.2f,<a name="line.507"></a>
+<span class="sourceLineNo">508</span>                                premios.premio9Aciertos, 0.01f);<a name="line.508"></a>
+<span class="sourceLineNo">509</span>                assertEquals("El premio para los acertantes de 8 no es correcto", 2.1f,<a name="line.509"></a>
+<span class="sourceLineNo">510</span>                                premios.premio8Aciertos, 0.01f);<a name="line.510"></a>
+<span class="sourceLineNo">511</span><a name="line.511"></a>
+<span class="sourceLineNo">512</span>                FuncionalidadPractica.sellarApuesta(administracionApuestas, quiniela8);<a name="line.512"></a>
+<span class="sourceLineNo">513</span>                FuncionalidadPractica.sellarApuesta(administracionApuestas, quiniela6);<a name="line.513"></a>
+<span class="sourceLineNo">514</span>                FuncionalidadPractica.sellarApuesta(administracionApuestas, quiniela5);<a name="line.514"></a>
+<span class="sourceLineNo">515</span>                <a name="line.515"></a>
+<span class="sourceLineNo">516</span>                premios = FuncionalidadPractica<a name="line.516"></a>
+<span class="sourceLineNo">517</span>                                .calcularPremiosAcertantes(calendario, listaEquipos,<a name="line.517"></a>
+<span class="sourceLineNo">518</span>                                                resultados, administracionApuestas, 0);<a name="line.518"></a>
+<span class="sourceLineNo">519</span>                assertNotNull("No se crea el reparto de premios", premios);<a name="line.519"></a>
+<span class="sourceLineNo">520</span>                assertEquals("El premio para los acertantes de 10 no es correcto",<a name="line.520"></a>
+<span class="sourceLineNo">521</span>                                3.93f, premios.premio10Aciertos, 0.01f);<a name="line.521"></a>
+<span class="sourceLineNo">522</span>                assertEquals("El premio para los acertantes de 9 no es correcto", 2.95f,<a name="line.522"></a>
+<span class="sourceLineNo">523</span>                                premios.premio9Aciertos, 0.01f);<a name="line.523"></a>
+<span class="sourceLineNo">524</span>                assertEquals("El premio para los acertantes de 8 no es correcto", 1.48f,<a name="line.524"></a>
+<span class="sourceLineNo">525</span>                                premios.premio8Aciertos, 0.01f);<a name="line.525"></a>
+<span class="sourceLineNo">526</span>        }<a name="line.526"></a>
+<span class="sourceLineNo">527</span><a name="line.527"></a>
+<span class="sourceLineNo">528</span>        /**<a name="line.528"></a>
+<span class="sourceLineNo">529</span>         * Subprograma que comprueba el correcto funcionamiento del subprograma<a name="line.529"></a>
+<span class="sourceLineNo">530</span>         * {@link packFuncionalidad.FuncionalidadPractica#cargarQuiniela(String)}<a name="line.530"></a>
+<span class="sourceLineNo">531</span>         */<a name="line.531"></a>
+<span class="sourceLineNo">532</span>        public void testCargarQuiniela() {<a name="line.532"></a>
+<span class="sourceLineNo">533</span><a name="line.533"></a>
+<span class="sourceLineNo">534</span>                // Fichero que no existe<a name="line.534"></a>
+<span class="sourceLineNo">535</span>                assertNull(<a name="line.535"></a>
+<span class="sourceLineNo">536</span>                                "No se trata adecuadamente el caso en el que el fichero no existe",<a name="line.536"></a>
+<span class="sourceLineNo">537</span>                                FuncionalidadPractica.cargarQuiniela("kk.txt"));<a name="line.537"></a>
+<span class="sourceLineNo">538</span>                // Quinielas incorrectas<a name="line.538"></a>
+<span class="sourceLineNo">539</span>                assertNull("No se comprueba que no haya apuestas múltiples repetidas",<a name="line.539"></a>
+<span class="sourceLineNo">540</span>                                FuncionalidadPractica.cargarQuiniela(PruebasPractica.class<a name="line.540"></a>
+<span class="sourceLineNo">541</span>                                                .getResource("/QuinielaE1.txt").getPath()));<a name="line.541"></a>
+<span class="sourceLineNo">542</span>                assertNull("No se comprueba el número adecuado de apuestas múltiples",<a name="line.542"></a>
+<span class="sourceLineNo">543</span>                                FuncionalidadPractica.cargarQuiniela(PruebasPractica.class<a name="line.543"></a>
+<span class="sourceLineNo">544</span>                                                .getResource("/QuinielaE2.txt").getPath()));<a name="line.544"></a>
+<span class="sourceLineNo">545</span>                assertNull("No se comprueba que las apuestas sean correctas",<a name="line.545"></a>
+<span class="sourceLineNo">546</span>                                FuncionalidadPractica.cargarQuiniela(PruebasPractica.class<a name="line.546"></a>
+<span class="sourceLineNo">547</span>                                                .getResource("/QuinielaE3.txt").getPath()));<a name="line.547"></a>
+<span class="sourceLineNo">548</span>                assertNull(<a name="line.548"></a>
+<span class="sourceLineNo">549</span>                                "No se comprueba que la apuesta sea correcta en un partido con apuesta múltiple",<a name="line.549"></a>
+<span class="sourceLineNo">550</span>                                FuncionalidadPractica.cargarQuiniela(PruebasPractica.class<a name="line.550"></a>
+<span class="sourceLineNo">551</span>                                                .getResource("/QuinielaE4.txt").getPath()));<a name="line.551"></a>
+<span class="sourceLineNo">552</span>                // Quiniela correcta<a name="line.552"></a>
+<span class="sourceLineNo">553</span>                Quiniela quinielaCorrecta = FuncionalidadPractica<a name="line.553"></a>
+<span class="sourceLineNo">554</span>                                .cargarQuiniela(PruebasPractica.class.getResource(<a name="line.554"></a>
+<span class="sourceLineNo">555</span>                                                "/Quiniela.txt").getPath());<a name="line.555"></a>
+<span class="sourceLineNo">556</span>                assertNotNull("No se carga la quiniela adecuadamente", quinielaCorrecta);<a name="line.556"></a>
+<span class="sourceLineNo">557</span>                assertEquals("No carga el identificador adecuadamente",<a name="line.557"></a>
+<span class="sourceLineNo">558</span>                                876765875768765876L, quinielaCorrecta.identificador);<a name="line.558"></a>
+<span class="sourceLineNo">559</span>                assertEquals("No carga la jornada adecuadamente", 9,<a name="line.559"></a>
+<span class="sourceLineNo">560</span>                                quinielaCorrecta.numJornada);<a name="line.560"></a>
+<span class="sourceLineNo">561</span>                assertEquals("No carga el apostante adecuadamente", "Juán Rellán",<a name="line.561"></a>
+<span class="sourceLineNo">562</span>                                quinielaCorrecta.nombreApostante);<a name="line.562"></a>
+<span class="sourceLineNo">563</span>                assertEquals("No carga el número de apuestas múltiples adecuadamente",<a name="line.563"></a>
+<span class="sourceLineNo">564</span>                                4, quinielaCorrecta.numApuestasMultiples);<a name="line.564"></a>
+<span class="sourceLineNo">565</span>                assertEquals("No carga las apuestas múltiples adecuadamente", 1,<a name="line.565"></a>
+<span class="sourceLineNo">566</span>                                quinielaCorrecta.apuestasMultiples[0]);<a name="line.566"></a>
+<span class="sourceLineNo">567</span>                assertEquals("No carga las apuestas múltiples adecuadamente", 4,<a name="line.567"></a>
+<span class="sourceLineNo">568</span>                                quinielaCorrecta.apuestasMultiples[1]);<a name="line.568"></a>
+<span class="sourceLineNo">569</span>                assertEquals("No carga las apuestas múltiples adecuadamente", 7,<a name="line.569"></a>
+<span class="sourceLineNo">570</span>                                quinielaCorrecta.apuestasMultiples[2]);<a name="line.570"></a>
+<span class="sourceLineNo">571</span>                assertEquals("No carga las apuestas múltiples adecuadamente", 9,<a name="line.571"></a>
+<span class="sourceLineNo">572</span>                                quinielaCorrecta.apuestasMultiples[3]);<a name="line.572"></a>
+<span class="sourceLineNo">573</span>                assertEquals("No carga las apuestas adecuadamente", '1',<a name="line.573"></a>
+<span class="sourceLineNo">574</span>                                quinielaCorrecta.apuesta[0]);<a name="line.574"></a>
+<span class="sourceLineNo">575</span>                assertEquals("No carga las apuestas adecuadamente", '2',<a name="line.575"></a>
+<span class="sourceLineNo">576</span>                                quinielaCorrecta.apuesta[1]);<a name="line.576"></a>
+<span class="sourceLineNo">577</span>                assertEquals("No carga las apuestas adecuadamente", 'X',<a name="line.577"></a>
+<span class="sourceLineNo">578</span>                                quinielaCorrecta.apuesta[2]);<a name="line.578"></a>
+<span class="sourceLineNo">579</span>                assertEquals("No carga las apuestas adecuadamente", '1',<a name="line.579"></a>
+<span class="sourceLineNo">580</span>                                quinielaCorrecta.apuesta[3]);<a name="line.580"></a>
+<span class="sourceLineNo">581</span>                assertEquals("No carga las apuestas adecuadamente", 'X',<a name="line.581"></a>
+<span class="sourceLineNo">582</span>                                quinielaCorrecta.apuesta[4]);<a name="line.582"></a>
+<span class="sourceLineNo">583</span>                assertEquals("No carga las apuestas adecuadamente", 'X',<a name="line.583"></a>
+<span class="sourceLineNo">584</span>                                quinielaCorrecta.apuesta[5]);<a name="line.584"></a>
+<span class="sourceLineNo">585</span>                assertEquals("No carga las apuestas adecuadamente", '2',<a name="line.585"></a>
+<span class="sourceLineNo">586</span>                                quinielaCorrecta.apuesta[6]);<a name="line.586"></a>
+<span class="sourceLineNo">587</span>                assertEquals("No carga las apuestas adecuadamente", '2',<a name="line.587"></a>
+<span class="sourceLineNo">588</span>                                quinielaCorrecta.apuesta[7]);<a name="line.588"></a>
+<span class="sourceLineNo">589</span>                assertEquals("No carga las apuestas adecuadamente", '2',<a name="line.589"></a>
+<span class="sourceLineNo">590</span>                                quinielaCorrecta.apuesta[8]);<a name="line.590"></a>
+<span class="sourceLineNo">591</span>                assertEquals("No carga las apuestas adecuadamente", '2',<a name="line.591"></a>
+<span class="sourceLineNo">592</span>                                quinielaCorrecta.apuesta[9]);<a name="line.592"></a>
+<span class="sourceLineNo">593</span>        }<a name="line.593"></a>
+<span class="sourceLineNo">594</span><a name="line.594"></a>
+<span class="sourceLineNo">595</span>}<a name="line.595"></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</pre>
+</div>
+</body>
+</html>
