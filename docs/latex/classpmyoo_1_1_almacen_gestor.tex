@@ -1,0 +1,125 @@
+\hypertarget{classpmyoo_1_1_almacen_gestor}{}\section{pmyoo.\+Almacen\+Gestor Class Reference}
+\label{classpmyoo_1_1_almacen_gestor}\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_a31da17aff527cbf866ce1534af9945bd}\label{classpmyoo_1_1_almacen_gestor_a31da17aff527cbf866ce1534af9945bd}} 
+{\bfseries Almacen\+Gestor} (\mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}} p\+Stock, \mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{Robot\+Preparador}} p\+Robot)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_a9a6e28c1d20a5e2d79a18a6ca6e942aa}{recibe\+Pedido}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_a4c5ffdeb0134800276ab6966ed85c53b}{despachar\+Pedidos}} ()
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_aa92a4786670021f05466322d3f43a76a}{recuperar\+Primera\+Caja}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_aed0af32513e1837d586eee005278a150}{caja\+Servida}} (\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}})
+\item 
+Array\+List$<$ \mbox{\hyperlink{classpmyoo_1_1_pedido}{Pedido}} $>$ \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_a10f9337aed8662bf6a1a1ba4028e23cc}{get\+Pedidos}} ()
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_pedido}{Pedido}} \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_a7e72a9c62f44e7f959d70898678dd4cc}{get\+Ultimo\+Pedido}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Crea un gestor de almacen donde se encuentra un stock y un robot con ciertos pedidos \begin{DoxyAuthor}{Author}
+Joel Villalobos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2017.\+06.\+04 
+\end{DoxyVersion}
+
+
+Definition at line 11 of file Almacen\+Gestor.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_aed0af32513e1837d586eee005278a150}\label{classpmyoo_1_1_almacen_gestor_aed0af32513e1837d586eee005278a150}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!cajaServida@{cajaServida}}
+\index{cajaServida@{cajaServida}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{cajaServida()}{cajaServida()}}
+{\footnotesize\ttfamily void pmyoo.\+Almacen\+Gestor.\+caja\+Servida (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}}]{Caja }\end{DoxyParamCaption})}
+
+Sirve la caja 
+\begin{DoxyParams}{Parameters}
+{\em \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}} & La caja que se va a servir \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 55 of file Almacen\+Gestor.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_a4c5ffdeb0134800276ab6966ed85c53b}\label{classpmyoo_1_1_almacen_gestor_a4c5ffdeb0134800276ab6966ed85c53b}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!despacharPedidos@{despacharPedidos}}
+\index{despacharPedidos@{despacharPedidos}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{despacharPedidos()}{despacharPedidos()}}
+{\footnotesize\ttfamily void pmyoo.\+Almacen\+Gestor.\+despachar\+Pedidos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Crea una lista de pedidos de manera que a medida que prepare un pedido lo borre de la lista de pedidos y al terminar se vaya a casa 
+
+Definition at line 33 of file Almacen\+Gestor.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_a10f9337aed8662bf6a1a1ba4028e23cc}\label{classpmyoo_1_1_almacen_gestor_a10f9337aed8662bf6a1a1ba4028e23cc}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!getPedidos@{getPedidos}}
+\index{getPedidos@{getPedidos}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{getPedidos()}{getPedidos()}}
+{\footnotesize\ttfamily Array\+List$<$\mbox{\hyperlink{classpmyoo_1_1_pedido}{Pedido}}$>$ pmyoo.\+Almacen\+Gestor.\+get\+Pedidos (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+La lista de los pedidos 
+\end{DoxyReturn}
+
+
+Definition at line 63 of file Almacen\+Gestor.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_a7e72a9c62f44e7f959d70898678dd4cc}\label{classpmyoo_1_1_almacen_gestor_a7e72a9c62f44e7f959d70898678dd4cc}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!getUltimoPedido@{getUltimoPedido}}
+\index{getUltimoPedido@{getUltimoPedido}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{getUltimoPedido()}{getUltimoPedido()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_pedido}{Pedido}} pmyoo.\+Almacen\+Gestor.\+get\+Ultimo\+Pedido (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El pedido 
+\end{DoxyReturn}
+
+
+Definition at line 70 of file Almacen\+Gestor.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_a9a6e28c1d20a5e2d79a18a6ca6e942aa}\label{classpmyoo_1_1_almacen_gestor_a9a6e28c1d20a5e2d79a18a6ca6e942aa}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!recibePedido@{recibePedido}}
+\index{recibePedido@{recibePedido}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{recibePedido()}{recibePedido()}}
+{\footnotesize\ttfamily void pmyoo.\+Almacen\+Gestor.\+recibe\+Pedido (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Crea un pedido nuevo y lo añade a una lista de pedidos 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila del pedido que recibe \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 25 of file Almacen\+Gestor.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_almacen_gestor_aa92a4786670021f05466322d3f43a76a}\label{classpmyoo_1_1_almacen_gestor_aa92a4786670021f05466322d3f43a76a}} 
+\index{pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}!recuperarPrimeraCaja@{recuperarPrimeraCaja}}
+\index{recuperarPrimeraCaja@{recuperarPrimeraCaja}!pmyoo.AlmacenGestor@{pmyoo.AlmacenGestor}}
+\subsubsection{\texorpdfstring{recuperarPrimeraCaja()}{recuperarPrimeraCaja()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} pmyoo.\+Almacen\+Gestor.\+recuperar\+Primera\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la primera caja a recuperar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La primera caja recuperada del stock 
+\end{DoxyReturn}
+
+
+Definition at line 48 of file Almacen\+Gestor.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+eclipse-\/workspace/practica\+Robot/src/pmyoo/Almacen\+Gestor.\+java\end{DoxyCompactItemize}

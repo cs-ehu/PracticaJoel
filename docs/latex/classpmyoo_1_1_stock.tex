@@ -1,0 +1,149 @@
+\hypertarget{classpmyoo_1_1_stock}{}\section{pmyoo.\+Stock Class Reference}
+\label{classpmyoo_1_1_stock}\index{pmyoo.Stock@{pmyoo.Stock}}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classpmyoo_1_1_stock_aea1cd4f5c91f8eaef0c2b304dd24f076}\label{classpmyoo_1_1_stock_aea1cd4f5c91f8eaef0c2b304dd24f076}} 
+{\bfseries Stock} (Color\mbox{[}$\,$\mbox{]} p\+Colores)
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}} \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}{get\+Estanterias}} ()
+\item 
+Color \mbox{[}$\,$\mbox{]} \mbox{\hyperlink{classpmyoo_1_1_stock_a4288d71a85dccd91e9937f69f37f747a}{get\+Colores}} ()
+\item 
+int \mbox{\hyperlink{classpmyoo_1_1_stock_a3746eff21c1c587afd89c058134ec194}{get\+Num\+Estanterias}} ()
+\item 
+int \mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{buscar\+Posicion}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}{anadir\+Caja}} (Color color, \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja)
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_stock_aa35d4c380eecb522d2e1d434a4e73c3e}{recuperar\+Primera\+Caja}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_stock_a295143a257ca45b1d60a65c16eea3e86}{caja\+Servida}} (Color color, \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Crea un stock donde añade las estanterias por colores \begin{DoxyAuthor}{Author}
+Joel Villalobos 
+\end{DoxyAuthor}
+
+
+Definition at line 9 of file Stock.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}\label{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!anadirCaja@{anadirCaja}}
+\index{anadirCaja@{anadirCaja}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{anadirCaja()}{anadirCaja()}}
+{\footnotesize\ttfamily void pmyoo.\+Stock.\+anadir\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color,  }\item[{\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}}]{caja }\end{DoxyParamCaption})}
+
+Añade una caja en la posición buscada del array de estanterias 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que se quiere añadir \\
+\hline
+{\em caja} & La caja que se quiere añadir \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}\label{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!buscarPosicion@{buscarPosicion}}
+\index{buscarPosicion@{buscarPosicion}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{buscarPosicion()}{buscarPosicion()}}
+{\footnotesize\ttfamily int pmyoo.\+Stock.\+buscar\+Posicion (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La posición del array de colores si se ha encontrado y si no devuelve -\/1 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_a295143a257ca45b1d60a65c16eea3e86}\label{classpmyoo_1_1_stock_a295143a257ca45b1d60a65c16eea3e86}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!cajaServida@{cajaServida}}
+\index{cajaServida@{cajaServida}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{cajaServida()}{cajaServida()}}
+{\footnotesize\ttfamily void pmyoo.\+Stock.\+caja\+Servida (\begin{DoxyParamCaption}\item[{Color}]{color,  }\item[{\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}}]{caja }\end{DoxyParamCaption})}
+
+Sirve la caja de la posición buscada del array de estanterias 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que se quiere servir \\
+\hline
+{\em caja} & La caja que va a ser servida \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 87 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_a4288d71a85dccd91e9937f69f37f747a}\label{classpmyoo_1_1_stock_a4288d71a85dccd91e9937f69f37f747a}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!getColores@{getColores}}
+\index{getColores@{getColores}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{getColores()}{getColores()}}
+{\footnotesize\ttfamily Color \mbox{[}$\,$\mbox{]} pmyoo.\+Stock.\+get\+Colores (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Un array de colores 
+\end{DoxyReturn}
+
+
+Definition at line 35 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}\label{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!getEstanterias@{getEstanterias}}
+\index{getEstanterias@{getEstanterias}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{getEstanterias()}{getEstanterias()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}} \mbox{[}$\,$\mbox{]} pmyoo.\+Stock.\+get\+Estanterias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+Un array de estanterias 
+\end{DoxyReturn}
+
+
+Definition at line 28 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_a3746eff21c1c587afd89c058134ec194}\label{classpmyoo_1_1_stock_a3746eff21c1c587afd89c058134ec194}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!getNumEstanterias@{getNumEstanterias}}
+\index{getNumEstanterias@{getNumEstanterias}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{getNumEstanterias()}{getNumEstanterias()}}
+{\footnotesize\ttfamily int pmyoo.\+Stock.\+get\+Num\+Estanterias (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+La longitud del array de estanterias, es decir, el número de estanterias que hay 
+\end{DoxyReturn}
+
+
+Definition at line 42 of file Stock.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_stock_aa35d4c380eecb522d2e1d434a4e73c3e}\label{classpmyoo_1_1_stock_aa35d4c380eecb522d2e1d434a4e73c3e}} 
+\index{pmyoo.Stock@{pmyoo.Stock}!recuperarPrimeraCaja@{recuperarPrimeraCaja}}
+\index{recuperarPrimeraCaja@{recuperarPrimeraCaja}!pmyoo.Stock@{pmyoo.Stock}}
+\subsubsection{\texorpdfstring{recuperarPrimeraCaja()}{recuperarPrimeraCaja()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} pmyoo.\+Stock.\+recuperar\+Primera\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que se quiere recuperar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+La caja recuperada de la posición buscada del array de estanterias 
+\end{DoxyReturn}
+
+
+Definition at line 79 of file Stock.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+eclipse-\/workspace/practica\+Robot/src/pmyoo/Stock.\+java\end{DoxyCompactItemize}

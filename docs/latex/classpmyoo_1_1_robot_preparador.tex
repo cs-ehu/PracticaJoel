@@ -1,0 +1,330 @@
+\hypertarget{classpmyoo_1_1_robot_preparador}{}\section{pmyoo.\+Robot\+Preparador Class Reference}
+\label{classpmyoo_1_1_robot_preparador}\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+Inheritance diagram for pmyoo.\+Robot\+Preparador\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classpmyoo_1_1_robot_preparador}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Ultrasonic\+Sensor \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{get\+Ultrasonic\+Sensor}} ()
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{Recogedor\+Caja}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}{get\+Recogedor\+Caja}} ()
+\item 
+\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{get\+Direccion}} ()
+\item 
+\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac177a862eb6c1a8cba1366fda28bc293}{get\+Tarea}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{set\+Direccion}} (\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} p\+Direccion)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{set\+Tarea}} (\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} p\+Tarea)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}{dar\+La\+Vuelta}} ()
+\item 
+boolean \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}{debe\+Seguir\+Borde}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}{buscar\+Fila}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}{girar}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}{buscar\+Caja}} (Color color)
+\item 
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a2a0ef592d78eacd68d7d02c600d12c36}\label{classpmyoo_1_1_robot_preparador_a2a0ef592d78eacd68d7d02c600d12c36}} 
+void {\bfseries far} (Sensor\+Port arg0, int arg1)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a7f6e8263ed191614dc0f92dfd999b8a2}{near}} (Sensor\+Port arg0, int arg1)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}{cargar\+Caja}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}{descargar\+Caja}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}{dejar\+Caja}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a24399de751eba50437b45f86c522a4b5}{preparar\+Pedido}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a9954de4c940ddafd6278cc9a5da35e75}{ir\+Acasa}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abd5aae119c70a9a514920fd4cdd0b136}{pressed}} (Sensor\+Port port)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0e025c876380e71fbe54ffaf1aa015a6}{set\+Gestor}} (\mbox{\hyperlink{classpmyoo_1_1_almacen_gestor}{Almacen\+Gestor}} gestor)
+\item 
+\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a696e8a35162f389ca0055fc7a5523bf9}{get\+Caja}} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Crea un robot de tipo \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea}{Robot\+Seguidor\+Linea}} y le añade un sensor de distancia y un recogedor de caja, de manera que pueda detectar objetos segun la distancia y recoger cajas \begin{DoxyAuthor}{Author}
+Joel Villalobos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2017.\+06.\+04 
+\end{DoxyVersion}
+
+
+Definition at line 11 of file Robot\+Preparador.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}\label{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!buscarCaja@{buscarCaja}}
+\index{buscarCaja@{buscarCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{buscarCaja()}{buscarCaja()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+buscar\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Buscara una caja, para ello primero pondrá la tarea a B\+U\+S\+C\+A\+N\+D\+O\+\_\+\+C\+A\+JA, luego buscará la fila, una vez encontrada la fila girará, cambiará la tarea a B\+U\+S\+C\+A\+N\+D\+O\+\_\+\+C\+A\+JA, se adelantara un poco y seguira el borde del color de la fila hasta que el sensor detecte un obstaculo a cierta distancia 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que tiene que buscar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 151 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}\label{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!buscarFila@{buscarFila}}
+\index{buscarFila@{buscarFila}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{buscarFila()}{buscarFila()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+buscar\+Fila (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Buscará la fila del color indicado y si la tarea es D\+E\+J\+A\+N\+D\+O\+\_\+\+C\+A\+JA la cambiará a B\+U\+S\+C\+A\+N\+D\+O\+\_\+\+F\+I\+LA 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de fila que tiene que buscar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 115 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}\label{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!cargarCaja@{cargarCaja}}
+\index{cargarCaja@{cargarCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{cargarCaja()}{cargarCaja()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+cargar\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Cambaiará la tarea a C\+A\+R\+G\+A\+N\+DO, bajara el recogedor de caja, 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que tiene que cargar, a caja la asignará la primera caja a recuperar y el recogedor de caja recogerá esa caja \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 197 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}\label{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!darLaVuelta@{darLaVuelta}}
+\index{darLaVuelta@{darLaVuelta}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{darLaVuelta()}{darLaVuelta()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+dar\+La\+Vuelta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Da media vuelta y cambia la direccion 
+
+Definition at line 78 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}\label{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!debeSeguirBorde@{debeSeguirBorde}}
+\index{debeSeguirBorde@{debeSeguirBorde}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{debeSeguirBorde()}{debeSeguirBorde()}}
+{\footnotesize\ttfamily boolean pmyoo.\+Robot\+Preparador.\+debe\+Seguir\+Borde (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Si la tarea es E\+N\+\_\+\+C\+A\+SA o C\+A\+R\+G\+A\+N\+DO no debe seguir borde, si no debe seguir el borde del color 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color que debe seguir el robot \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 103 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}\label{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!dejarCaja@{dejarCaja}}
+\index{dejarCaja@{dejarCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{dejarCaja()}{dejarCaja()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+dejar\+Caja (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Cambiará la tarea a D\+E\+J\+A\+N\+D\+O\+\_\+\+C\+A\+JA seguirá el borde de color mientras el color detectado sea distinto del negro, una vez sea encontrado el negro avanzará un poco hasta encontrarse con otro color, girará y buscara la fila del color del almacen y descargará la caja 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila de la caja que tiene que dejar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 218 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}\label{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!descargarCaja@{descargarCaja}}
+\index{descargarCaja@{descargarCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{descargarCaja()}{descargarCaja()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+descargar\+Caja (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Levantará el recogedor de caja y cambiará la tarea a L\+I\+B\+RE y dejará la caja 
+
+Definition at line 206 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a696e8a35162f389ca0055fc7a5523bf9}\label{classpmyoo_1_1_robot_preparador_a696e8a35162f389ca0055fc7a5523bf9}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!getCaja@{getCaja}}
+\index{getCaja@{getCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{getCaja()}{getCaja()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} pmyoo.\+Robot\+Preparador.\+get\+Caja (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+La caja 
+\end{DoxyReturn}
+
+
+Definition at line 281 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}\label{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!getDireccion@{getDireccion}}
+\index{getDireccion@{getDireccion}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{getDireccion()}{getDireccion()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} pmyoo.\+Robot\+Preparador.\+get\+Direccion (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+La direccion del robot 
+\end{DoxyReturn}
+
+
+Definition at line 50 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}\label{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!getRecogedorCaja@{getRecogedorCaja}}
+\index{getRecogedorCaja@{getRecogedorCaja}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{getRecogedorCaja()}{getRecogedorCaja()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{Recogedor\+Caja}} pmyoo.\+Robot\+Preparador.\+get\+Recogedor\+Caja (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El recogedor de caja 
+\end{DoxyReturn}
+
+
+Definition at line 43 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_ac177a862eb6c1a8cba1366fda28bc293}\label{classpmyoo_1_1_robot_preparador_ac177a862eb6c1a8cba1366fda28bc293}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!getTarea@{getTarea}}
+\index{getTarea@{getTarea}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{getTarea()}{getTarea()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} pmyoo.\+Robot\+Preparador.\+get\+Tarea (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+La tarea asignada al robot 
+\end{DoxyReturn}
+
+
+Definition at line 57 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}\label{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!getUltrasonicSensor@{getUltrasonicSensor}}
+\index{getUltrasonicSensor@{getUltrasonicSensor}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{getUltrasonicSensor()}{getUltrasonicSensor()}}
+{\footnotesize\ttfamily Ultrasonic\+Sensor pmyoo.\+Robot\+Preparador.\+get\+Ultrasonic\+Sensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El sensor de distancia 
+\end{DoxyReturn}
+
+
+Definition at line 36 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}\label{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!girar@{girar}}
+\index{girar@{girar}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{girar()}{girar()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+girar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+El robot girará segun la direccion que tenga y cambiará la direccion una vez girado 
+
+Definition at line 124 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a9954de4c940ddafd6278cc9a5da35e75}\label{classpmyoo_1_1_robot_preparador_a9954de4c940ddafd6278cc9a5da35e75}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!irAcasa@{irAcasa}}
+\index{irAcasa@{irAcasa}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{irAcasa()}{irAcasa()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+ir\+Acasa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Cuando la tarea sea L\+I\+B\+RE irá a casa 
+
+Definition at line 257 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a7f6e8263ed191614dc0f92dfd999b8a2}\label{classpmyoo_1_1_robot_preparador_a7f6e8263ed191614dc0f92dfd999b8a2}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!near@{near}}
+\index{near@{near}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{near()}{near()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+near (\begin{DoxyParamCaption}\item[{Sensor\+Port}]{arg0,  }\item[{int}]{arg1 }\end{DoxyParamCaption})}
+
+Cambia la tarea de B\+U\+S\+C\+A\+N\+D\+O\+\_\+\+C\+A\+JA a C\+A\+R\+G\+A\+N\+DO 
+
+Definition at line 185 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a24399de751eba50437b45f86c522a4b5}\label{classpmyoo_1_1_robot_preparador_a24399de751eba50437b45f86c522a4b5}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!prepararPedido@{prepararPedido}}
+\index{prepararPedido@{prepararPedido}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{prepararPedido()}{prepararPedido()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+preparar\+Pedido (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Buscará la caja, la cargará, dará la vuelta, irá a dejar la caja al almacen, se echará un poco hacia atras y dará media vuelta, una vez hecho esto, la caja depositada en el almacen se borrará 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de la fila donde se encuentra el pedido que tiene que preparar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 241 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_abd5aae119c70a9a514920fd4cdd0b136}\label{classpmyoo_1_1_robot_preparador_abd5aae119c70a9a514920fd4cdd0b136}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!pressed@{pressed}}
+\index{pressed@{pressed}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{pressed()}{pressed()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+pressed (\begin{DoxyParamCaption}\item[{Sensor\+Port}]{port }\end{DoxyParamCaption})}
+
+Si la tarea es L\+I\+B\+RE cambiará la tarea a E\+N\+\_\+\+C\+A\+SA y hará pressed 
+
+Definition at line 265 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}\label{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!setDireccion@{setDireccion}}
+\index{setDireccion@{setDireccion}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{setDireccion()}{setDireccion()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+set\+Direccion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}}]{p\+Direccion }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Direccion} & Cambia la direccion \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 64 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_a0e025c876380e71fbe54ffaf1aa015a6}\label{classpmyoo_1_1_robot_preparador_a0e025c876380e71fbe54ffaf1aa015a6}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!setGestor@{setGestor}}
+\index{setGestor@{setGestor}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{setGestor()}{setGestor()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+set\+Gestor (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classpmyoo_1_1_almacen_gestor}{Almacen\+Gestor}}}]{gestor }\end{DoxyParamCaption})}
+
+a almacen\+Gestor le asignara un gestor de tipo \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor}{Almacen\+Gestor}} 
+
+Definition at line 274 of file Robot\+Preparador.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}\label{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}} 
+\index{pmyoo.RobotPreparador@{pmyoo.RobotPreparador}!setTarea@{setTarea}}
+\index{setTarea@{setTarea}!pmyoo.RobotPreparador@{pmyoo.RobotPreparador}}
+\subsubsection{\texorpdfstring{setTarea()}{setTarea()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Preparador.\+set\+Tarea (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}}]{p\+Tarea }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Tarea} & Cambia la tarea asignada \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 71 of file Robot\+Preparador.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+eclipse-\/workspace/practica\+Robot/src/pmyoo/Robot\+Preparador.\+java\end{DoxyCompactItemize}

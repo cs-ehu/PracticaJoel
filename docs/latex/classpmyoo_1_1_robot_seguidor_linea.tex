@@ -1,0 +1,314 @@
+\hypertarget{classpmyoo_1_1_robot_seguidor_linea}{}\section{pmyoo.\+Robot\+Seguidor\+Linea Class Reference}
+\label{classpmyoo_1_1_robot_seguidor_linea}\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+Inheritance diagram for pmyoo.\+Robot\+Seguidor\+Linea\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classpmyoo_1_1_robot_seguidor_linea}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+Lego\+Robot \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}{get\+Lego\+Robot}} ()
+\item 
+Motor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a8d21a5efadd43235d26f558753c3cb64}{get\+MotorD}} ()
+\item 
+Motor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_acf0ddd8e83d5aa54fe7df0beca91252d}{get\+MotorI}} ()
+\item 
+Color\+Sensor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}{get\+Color\+Sensor}} ()
+\item 
+Touch\+Sensor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad4e06df5f601f9d7d248bbf0dbe30a98}{get\+Touch\+Sensor}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa2d0e023c3b16f8ed4d56cc0541aff6a}{set\+Velocidad}} (int velocidad)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}{atras}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}} ()
+\item 
+Color \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{get\+Color}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}{dar\+La\+Vuelta}} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}} (int tiempo)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{girarD}} (int tiempo)
+\item 
+boolean \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}{debe\+Seguir\+Borde}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{seguir\+Borde}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}{buscar\+Fila}} (Color color)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}{ir\+Acasa}} ()
+\item 
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a26f2204f445d0b1772d66dabe4de1d04}\label{classpmyoo_1_1_robot_seguidor_linea_a26f2204f445d0b1772d66dabe4de1d04}} 
+void {\bfseries act} ()
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}{pressed}} (Sensor\+Port port)
+\item 
+void \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}{released}} (Sensor\+Port port)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Es una clase que crea un robot de tipo Lego\+Robot, le añade unos motores y unos sensores para que siga el borde de un color y busque la fila de un color \begin{DoxyAuthor}{Author}
+Joel Villalobos 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+2017.\+06.\+04 
+\end{DoxyVersion}
+
+
+Definition at line 12 of file Robot\+Seguidor\+Linea.\+java.
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}\label{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!adelante@{adelante}}
+\index{adelante@{adelante}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{adelante()}{adelante()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+adelante (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Los dos motores van hacia adelante de manera que el robot va hacia adelante 
+
+Definition at line 80 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}\label{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!atras@{atras}}
+\index{atras@{atras}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{atras()}{atras()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+atras (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Los dos motores van hacia atras de manera que el robot va hacia atras 
+
+Definition at line 87 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}\label{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!buscarFila@{buscarFila}}
+\index{buscarFila@{buscarFila}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{buscarFila()}{buscarFila()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+buscar\+Fila (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Mientras el color detectado por el sensor sea distinto que el color repetira este proceso\+: Ira hacia adelante un poco para y seguira el borde negro, cuando el color detectado sea el mismo que el color, el robot se parará, ya que ha encontrado la fila buscada 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color de fila que tiene que buscar \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 185 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}\label{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!darLaVuelta@{darLaVuelta}}
+\index{darLaVuelta@{darLaVuelta}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{darLaVuelta()}{darLaVuelta()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+dar\+La\+Vuelta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+El robot pone en marcha un motor hacia adelante y otro hacia atras de manera que el robot ira girando cierto tiempo hasta dar media vuelta 
+
+Definition at line 116 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}\label{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!debeSeguirBorde@{debeSeguirBorde}}
+\index{debeSeguirBorde@{debeSeguirBorde}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{debeSeguirBorde()}{debeSeguirBorde()}}
+{\footnotesize\ttfamily boolean pmyoo.\+Robot\+Seguidor\+Linea.\+debe\+Seguir\+Borde (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & El color que debe seguir el robot \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True si el color es blanco o el mismo que el detectado por el sensor de color 
+\end{DoxyReturn}
+
+
+Definition at line 149 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}\label{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getColor@{getColor}}
+\index{getColor@{getColor}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getColor()}{getColor()}}
+{\footnotesize\ttfamily Color pmyoo.\+Robot\+Seguidor\+Linea.\+get\+Color (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El color detectado por el sensor de color 
+\end{DoxyReturn}
+
+
+Definition at line 102 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}\label{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getColorSensor@{getColorSensor}}
+\index{getColorSensor@{getColorSensor}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getColorSensor()}{getColorSensor()}}
+{\footnotesize\ttfamily Color\+Sensor pmyoo.\+Robot\+Seguidor\+Linea.\+get\+Color\+Sensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El sensor de color 
+\end{DoxyReturn}
+
+
+Definition at line 59 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}\label{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getLegoRobot@{getLegoRobot}}
+\index{getLegoRobot@{getLegoRobot}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getLegoRobot()}{getLegoRobot()}}
+{\footnotesize\ttfamily Lego\+Robot pmyoo.\+Robot\+Seguidor\+Linea.\+get\+Lego\+Robot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El robot creado de tipo Lego\+Robot 
+\end{DoxyReturn}
+
+
+Definition at line 38 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a8d21a5efadd43235d26f558753c3cb64}\label{classpmyoo_1_1_robot_seguidor_linea_a8d21a5efadd43235d26f558753c3cb64}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getMotorD@{getMotorD}}
+\index{getMotorD@{getMotorD}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getMotorD()}{getMotorD()}}
+{\footnotesize\ttfamily Motor pmyoo.\+Robot\+Seguidor\+Linea.\+get\+MotorD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El motor de la rueda derecha 
+\end{DoxyReturn}
+
+
+Definition at line 45 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_acf0ddd8e83d5aa54fe7df0beca91252d}\label{classpmyoo_1_1_robot_seguidor_linea_acf0ddd8e83d5aa54fe7df0beca91252d}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getMotorI@{getMotorI}}
+\index{getMotorI@{getMotorI}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getMotorI()}{getMotorI()}}
+{\footnotesize\ttfamily Motor pmyoo.\+Robot\+Seguidor\+Linea.\+get\+MotorI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El motor de la rueda izquierda 
+\end{DoxyReturn}
+
+
+Definition at line 52 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ad4e06df5f601f9d7d248bbf0dbe30a98}\label{classpmyoo_1_1_robot_seguidor_linea_ad4e06df5f601f9d7d248bbf0dbe30a98}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!getTouchSensor@{getTouchSensor}}
+\index{getTouchSensor@{getTouchSensor}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{getTouchSensor()}{getTouchSensor()}}
+{\footnotesize\ttfamily Touch\+Sensor pmyoo.\+Robot\+Seguidor\+Linea.\+get\+Touch\+Sensor (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyReturn}{Returns}
+El sensor de contacto 
+\end{DoxyReturn}
+
+
+Definition at line 66 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}\label{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!girarD@{girarD}}
+\index{girarD@{girarD}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{girarD()}{girarD()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+girarD (\begin{DoxyParamCaption}\item[{int}]{tiempo }\end{DoxyParamCaption})}
+
+El robot pone en marcha el motor izquierdo hacia adelante y el derecho hacia atras de manera que el robot girara a la derecha 
+\begin{DoxyParams}{Parameters}
+{\em tiempo} & gira hacia la derecha el tiempo definido \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 138 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}\label{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!girarI@{girarI}}
+\index{girarI@{girarI}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{girarI()}{girarI()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+girarI (\begin{DoxyParamCaption}\item[{int}]{tiempo }\end{DoxyParamCaption})}
+
+El robot pone en marcha el motor derecho hacia adelante y el izquierdo hacia atras de manera que el robot girara a la izquierda 
+\begin{DoxyParams}{Parameters}
+{\em tiempo} & gira hacia la izquierda el tiempo definido \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 127 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}\label{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!irAcasa@{irAcasa}}
+\index{irAcasa@{irAcasa}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{irAcasa()}{irAcasa()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+ir\+Acasa (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+El robot seguira el borde negro hasta que el sensor de contacto sea presionado por el obstaculo que hay en casa, luego girará y avanzará un poco para aparcar el robot en casa 
+
+Definition at line 198 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}\label{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!parar@{parar}}
+\index{parar@{parar}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{parar()}{parar()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+parar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Los dos motores se paran de manera que el robot se para 
+
+Definition at line 94 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}\label{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!pressed@{pressed}}
+\index{pressed@{pressed}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{pressed()}{pressed()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+pressed (\begin{DoxyParamCaption}\item[{Sensor\+Port}]{port }\end{DoxyParamCaption})}
+
+Va hacia atras un determinado tiempo 
+
+Definition at line 216 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}\label{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!released@{released}}
+\index{released@{released}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{released()}{released()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+released (\begin{DoxyParamCaption}\item[{Sensor\+Port}]{port }\end{DoxyParamCaption})}
+
+Da media vuelta y avanza un poco 
+
+Definition at line 224 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}\label{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!seguirBorde@{seguirBorde}}
+\index{seguirBorde@{seguirBorde}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{seguirBorde()}{seguirBorde()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+seguir\+Borde (\begin{DoxyParamCaption}\item[{Color}]{color }\end{DoxyParamCaption})}
+
+Mientras el color que deba seguir sea blanco o el color detectador por el sensor de color repetira el siguiente proceso\+: si el color es blanco girará a la izquierda y si no, es decir, si es el detectado por el sensor de color girará a la derecha De esta manera el robot seguira el borde derecho de el color 
+\begin{DoxyParams}{Parameters}
+{\em color} & El color que tiene que seguir el robot \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 165 of file Robot\+Seguidor\+Linea.\+java.
+
+\mbox{\Hypertarget{classpmyoo_1_1_robot_seguidor_linea_aa2d0e023c3b16f8ed4d56cc0541aff6a}\label{classpmyoo_1_1_robot_seguidor_linea_aa2d0e023c3b16f8ed4d56cc0541aff6a}} 
+\index{pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}!setVelocidad@{setVelocidad}}
+\index{setVelocidad@{setVelocidad}!pmyoo.RobotSeguidorLinea@{pmyoo.RobotSeguidorLinea}}
+\subsubsection{\texorpdfstring{setVelocidad()}{setVelocidad()}}
+{\footnotesize\ttfamily void pmyoo.\+Robot\+Seguidor\+Linea.\+set\+Velocidad (\begin{DoxyParamCaption}\item[{int}]{velocidad }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em velocidad} & Cambia la velocidad \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 73 of file Robot\+Seguidor\+Linea.\+java.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+eclipse-\/workspace/practica\+Robot/src/pmyoo/Robot\+Seguidor\+Linea.\+java\end{DoxyCompactItemize}
