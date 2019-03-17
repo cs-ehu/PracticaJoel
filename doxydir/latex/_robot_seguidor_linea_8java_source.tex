@@ -1,0 +1,153 @@
+\hypertarget{_robot_seguidor_linea_8java_source}{}\section{Robot\+Seguidor\+Linea.\+java}
+\label{_robot_seguidor_linea_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/RobotSeguidorLinea.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/RobotSeguidorLinea.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 \textcolor{keyword}{import} java.awt.Color;}
+\DoxyCodeLine{00004 }
+\DoxyCodeLine{00005 \textcolor{keyword}{import} ch.aplu.robotsim.*;}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00012}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea}{00012}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea}{RobotSeguidorLinea}} \textcolor{keyword}{implements} TouchListener\{}
+\DoxyCodeLine{00013     \textcolor{keyword}{private} LegoRobot robot;}
+\DoxyCodeLine{00014     \textcolor{keyword}{private} Motor motorD;}
+\DoxyCodeLine{00015     \textcolor{keyword}{private} Motor motorI;}
+\DoxyCodeLine{00016     \textcolor{keyword}{private} ColorSensor sensorColor;}
+\DoxyCodeLine{00017     \textcolor{keyword}{private} TouchSensor sensorContacto;}
+\DoxyCodeLine{00018     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea}{RobotSeguidorLinea}}()\{}
+\DoxyCodeLine{00019         robot = \textcolor{keyword}{new} LegoRobot();}
+\DoxyCodeLine{00020         }
+\DoxyCodeLine{00021         motorD = \textcolor{keyword}{new} Motor(MotorPort.A);}
+\DoxyCodeLine{00022         robot.addPart(motorD);}
+\DoxyCodeLine{00023         }
+\DoxyCodeLine{00024         motorI = \textcolor{keyword}{new} Motor(MotorPort.B);}
+\DoxyCodeLine{00025         robot.addPart(motorI);}
+\DoxyCodeLine{00026         }
+\DoxyCodeLine{00027         sensorColor = \textcolor{keyword}{new} ColorSensor(SensorPort.S1);}
+\DoxyCodeLine{00028         robot.addPart(sensorColor);}
+\DoxyCodeLine{00029         }
+\DoxyCodeLine{00030         sensorContacto = \textcolor{keyword}{new} TouchSensor(SensorPort.S2);}
+\DoxyCodeLine{00031         robot.addPart(sensorContacto);}
+\DoxyCodeLine{00032         sensorContacto.addTouchListener( \textcolor{keyword}{this} );}
+\DoxyCodeLine{00033     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00038}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}{00038}}     \textcolor{keyword}{public} LegoRobot \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}{getLegoRobot}}()\{}
+\DoxyCodeLine{00039         \textcolor{keywordflow}{return} robot;}
+\DoxyCodeLine{00040     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00045}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a8d21a5efadd43235d26f558753c3cb64}{00045}}     \textcolor{keyword}{public} Motor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a8d21a5efadd43235d26f558753c3cb64}{getMotorD}}()\{}
+\DoxyCodeLine{00046         \textcolor{keywordflow}{return} motorD;}
+\DoxyCodeLine{00047     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00052}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_acf0ddd8e83d5aa54fe7df0beca91252d}{00052}}     \textcolor{keyword}{public} Motor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_acf0ddd8e83d5aa54fe7df0beca91252d}{getMotorI}}()\{}
+\DoxyCodeLine{00053         \textcolor{keywordflow}{return} motorI;}
+\DoxyCodeLine{00054     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00059}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}{00059}}     \textcolor{keyword}{public} ColorSensor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}{getColorSensor}}()\{}
+\DoxyCodeLine{00060         \textcolor{keywordflow}{return} sensorColor;}
+\DoxyCodeLine{00061     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00066}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad4e06df5f601f9d7d248bbf0dbe30a98}{00066}}     \textcolor{keyword}{public} TouchSensor \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad4e06df5f601f9d7d248bbf0dbe30a98}{getTouchSensor}}()\{}
+\DoxyCodeLine{00067         \textcolor{keywordflow}{return} sensorContacto;}
+\DoxyCodeLine{00068     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00073}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa2d0e023c3b16f8ed4d56cc0541aff6a}{00073}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa2d0e023c3b16f8ed4d56cc0541aff6a}{setVelocidad}}(\textcolor{keywordtype}{int} velocidad)\{}
+\DoxyCodeLine{00074         motorD.setSpeed(velocidad);}
+\DoxyCodeLine{00075         motorI.setSpeed(velocidad);}
+\DoxyCodeLine{00076     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00080}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{00080}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}()\{}
+\DoxyCodeLine{00081         motorD.forward();}
+\DoxyCodeLine{00082         motorI.forward();}
+\DoxyCodeLine{00083     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00087}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}{00087}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}{atras}}()\{}
+\DoxyCodeLine{00088         motorD.backward();}
+\DoxyCodeLine{00089         motorI.backward();}
+\DoxyCodeLine{00090     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00094}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{00094}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}()\{}
+\DoxyCodeLine{00095         motorD.stop();}
+\DoxyCodeLine{00096         motorI.stop();}
+\DoxyCodeLine{00097     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00102}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{00102}}     \textcolor{keyword}{public} Color \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{getColor}}()\{ }
+\DoxyCodeLine{00103         \textcolor{keywordtype}{int}[] naranja = \{244,255, 192, 212 , 0 , 15 \};}
+\DoxyCodeLine{00104         Color color = sensorColor.getColor();}
+\DoxyCodeLine{00105         \textcolor{keywordflow}{if} ( ColorSensor.inColorCube(color, naranja ) )}
+\DoxyCodeLine{00106             \textcolor{keywordflow}{return} \textcolor{keyword}{new} Color(254,202,0);}
+\DoxyCodeLine{00107         \textcolor{comment}{//else \{  }}
+\DoxyCodeLine{00108             \textcolor{keywordflow}{return} color;}
+\DoxyCodeLine{00109         \textcolor{comment}{//\}}}
+\DoxyCodeLine{00110 }
+\DoxyCodeLine{00111     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00116}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}{00116}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}{darLaVuelta}}()\{}
+\DoxyCodeLine{00117         motorD.forward();}
+\DoxyCodeLine{00118         motorI.backward();}
+\DoxyCodeLine{00119         Tools.delay(1350);}
+\DoxyCodeLine{00120         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00121     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00127}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{00127}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}}(\textcolor{keywordtype}{int} tiempo)\{}
+\DoxyCodeLine{00128         motorD.forward();}
+\DoxyCodeLine{00129         motorI.backward();}
+\DoxyCodeLine{00130         Tools.delay(tiempo);}
+\DoxyCodeLine{00131         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00132     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00138}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{00138}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{girarD}}(\textcolor{keywordtype}{int} tiempo)\{}
+\DoxyCodeLine{00139         motorD.backward();}
+\DoxyCodeLine{00140         motorI.forward();}
+\DoxyCodeLine{00141         Tools.delay(tiempo);}
+\DoxyCodeLine{00142         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00143     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00149}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}{00149}}     \textcolor{keyword}{public} \textcolor{keywordtype}{boolean} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}{debeSeguirBorde}}(Color color)\{}
+\DoxyCodeLine{00150         \textcolor{keywordflow}{if} (sensorColor.getColor().equals(Color.WHITE) || \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{getColor}}().equals(color))\{}
+\DoxyCodeLine{00151             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00152         \}}
+\DoxyCodeLine{00153         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00154             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00155         \}}
+\DoxyCodeLine{00156     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00165}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{00165}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{seguirBorde}}(Color color)\{}
+\DoxyCodeLine{00166         \textcolor{keywordflow}{while} (\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a016636de0d300d4064e1c70b06bf0123}{debeSeguirBorde}}(color))\{}
+\DoxyCodeLine{00167             \textcolor{keywordflow}{if} (sensorColor.getColor().equals(Color.WHITE))\{}
+\DoxyCodeLine{00168                 \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00169                 Tools.delay(50);}
+\DoxyCodeLine{00170                 \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}}(100);}
+\DoxyCodeLine{00171             \}}
+\DoxyCodeLine{00172             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00173                 \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00174                 Tools.delay(50);}
+\DoxyCodeLine{00175                 \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{girarD}}(100);}
+\DoxyCodeLine{00176             \}}
+\DoxyCodeLine{00177         \}}
+\DoxyCodeLine{00178     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00185}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}{00185}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void}  \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}{buscarFila}} (Color color)\{}
+\DoxyCodeLine{00186         \textcolor{keywordflow}{while}(\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{getColor}}().equals(color) == \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00187             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00188             Tools.delay(30);}
+\DoxyCodeLine{00189             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{seguirBorde}}(Color.BLACK);}
+\DoxyCodeLine{00190         \}}
+\DoxyCodeLine{00191         }
+\DoxyCodeLine{00192         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00193     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00198}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}{00198}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}{irAcasa}}()\{}
+\DoxyCodeLine{00199         \textcolor{keywordflow}{while}(!sensorContacto.isPressed())\{}
+\DoxyCodeLine{00200             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00201             Tools.delay(30);}
+\DoxyCodeLine{00202             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00203             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{seguirBorde}}(Color.BLACK);}
+\DoxyCodeLine{00204         \}}
+\DoxyCodeLine{00205         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}{pressed}}(SensorPort.S2);}
+\DoxyCodeLine{00206         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}{released}}(SensorPort.S2);}
+\DoxyCodeLine{00207     \}}
+\DoxyCodeLine{00208     \textcolor{keyword}{public} \textcolor{keywordtype}{void} act()\{}
+\DoxyCodeLine{00209         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a1be6893751e8d9e8dabeda0e4cbfe4a0}{buscarFila}}(Color.YELLOW);}
+\DoxyCodeLine{00210         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}{darLaVuelta}}();}
+\DoxyCodeLine{00211         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aaf748dc3ff6093450fcfbb9f72539c42}{irAcasa}}();}
+\DoxyCodeLine{00212     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00216}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}{00216}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae1fa2dcde4a757e818194b1c413bdd13}{pressed}}(SensorPort port) \{}
+\DoxyCodeLine{00217             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00218             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}{atras}}();}
+\DoxyCodeLine{00219             Tools.delay(200);}
+\DoxyCodeLine{00220     \}}
+\DoxyCodeLine{\Hypertarget{_robot_seguidor_linea_8java_source_l00224}\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}{00224}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad6089322765e858b256ab12789b1e0fc}{released}}(SensorPort port) \{}
+\DoxyCodeLine{00225         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00226         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a312004e84b48d2c73615ce1580fe62e9}{darLaVuelta}}();}
+\DoxyCodeLine{00227         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00228         Tools.delay(500);}
+\DoxyCodeLine{00229         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00230         }
+\DoxyCodeLine{00231     \}}
+\DoxyCodeLine{00232 \}}
+\DoxyCodeLine{00233 }
+
+\end{DoxyCode}

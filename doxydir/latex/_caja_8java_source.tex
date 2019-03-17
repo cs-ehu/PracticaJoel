@@ -1,0 +1,34 @@
+\hypertarget{_caja_8java_source}{}\section{Caja.\+java}
+\label{_caja_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/Caja.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/Caja.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 \textcolor{keyword}{import} java.awt.Color;}
+\DoxyCodeLine{00004 \textcolor{keyword}{import} java.awt.Point;}
+\DoxyCodeLine{00005 \textcolor{keyword}{import} java.awt.image.BufferedImage;}
+\DoxyCodeLine{00006 }
+\DoxyCodeLine{00007 \textcolor{keyword}{import} ch.aplu.jgamegrid.Actor;}
+\DoxyCodeLine{00008 \textcolor{keyword}{import} ch.aplu.jgamegrid.GGBitmap;}
+\DoxyCodeLine{00009 \textcolor{keyword}{import} ch.aplu.robotsim.Target;}
+\DoxyCodeLine{00010 }
+\DoxyCodeLine{\Hypertarget{_caja_8java_source_l00011}\mbox{\hyperlink{classpmyoo_1_1_caja}{00011}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \textcolor{keyword}{extends} Actor\{}
+\DoxyCodeLine{00012 }
+\DoxyCodeLine{00013     \textcolor{keyword}{private} Target target;}
+\DoxyCodeLine{00014     }
+\DoxyCodeLine{00015     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}() \{}
+\DoxyCodeLine{00016         super(\textcolor{keyword}{true}, \textcolor{stringliteral}{"escenarios/cajaGris.png"});}
+\DoxyCodeLine{00017         Point[] mesh = \textcolor{keyword}{new} Point[]\{\textcolor{keyword}{new} Point(-10,1),\textcolor{keyword}{new} Point(-5,1), \textcolor{keyword}{new} Point(0,1),\textcolor{keyword}{new} Point(5,1), \textcolor{keyword}{new} Point(10,1)\};}
+\DoxyCodeLine{00018         target = \textcolor{keyword}{new} Target(\textcolor{stringliteral}{"escenarios/bar2.png"}, mesh);}
+\DoxyCodeLine{00019     \} }
+\DoxyCodeLine{00020     }
+\DoxyCodeLine{00021     \textcolor{keyword}{public} Target getTarget()\{}
+\DoxyCodeLine{00022         \textcolor{keywordflow}{return} target;}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{00024     }
+\DoxyCodeLine{00025     \textcolor{keyword}{public} \textcolor{keywordtype}{void} cargada()\{}
+\DoxyCodeLine{00026         target.removeSelf();}
+\DoxyCodeLine{00027     \}}
+\DoxyCodeLine{00028 \}}
+
+\end{DoxyCode}

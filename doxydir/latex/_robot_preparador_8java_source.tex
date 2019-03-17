@@ -1,0 +1,201 @@
+\hypertarget{_robot_preparador_8java_source}{}\section{Robot\+Preparador.\+java}
+\label{_robot_preparador_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/RobotPreparador.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/RobotPreparador.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 \textcolor{keyword}{import} java.awt.Color;}
+\DoxyCodeLine{00004 \textcolor{keyword}{import} ch.aplu.robotsim.*;}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00011}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{00011}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{RobotPreparador}} \textcolor{keyword}{extends} \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea}{RobotSeguidorLinea}} implements UltrasonicListener \{}
+\DoxyCodeLine{00012     \textcolor{keyword}{private} UltrasonicSensor sensorDistancia;}
+\DoxyCodeLine{00013     \textcolor{keyword}{private} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}} recogedorDeCaja;}
+\DoxyCodeLine{00014     \textcolor{keyword}{private} \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} direccion;}
+\DoxyCodeLine{00015     \textcolor{keyword}{private} \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} tarea;}
+\DoxyCodeLine{00016     \textcolor{keyword}{private} \mbox{\hyperlink{classpmyoo_1_1_almacen_gestor}{AlmacenGestor}} almacenGestor;}
+\DoxyCodeLine{00017     \textcolor{keyword}{private} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja;}
+\DoxyCodeLine{00018     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{RobotPreparador}}()\{}
+\DoxyCodeLine{00019         super();}
+\DoxyCodeLine{00020         }
+\DoxyCodeLine{00021         sensorDistancia = \textcolor{keyword}{new} UltrasonicSensor(SensorPort.S3);}
+\DoxyCodeLine{00022          \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}{getLegoRobot}}().addPart(sensorDistancia);}
+\DoxyCodeLine{00023         sensorDistancia.setBeamAreaColor(Color.GREEN);}
+\DoxyCodeLine{00024         \textcolor{comment}{//sensorDistancia.setDirection(-180);}}
+\DoxyCodeLine{00025         sensorDistancia.setProximityCircleColor(Color.DARK\_GRAY);}
+\DoxyCodeLine{00026         recogedorDeCaja = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}}(MotorPort.C);}
+\DoxyCodeLine{00027         direccion = \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.ESTE;}
+\DoxyCodeLine{00028         tarea = \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.EN\_CASA;}
+\DoxyCodeLine{00029         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ad1d04121a07a3decf09256d46752415c}{getLegoRobot}}().addPart(recogedorDeCaja.\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a3e34ca212881d63d8d9eb5657dcc2089}{getMotor}}());}
+\DoxyCodeLine{00030         }
+\DoxyCodeLine{00031     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00036}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{00036}}     \textcolor{keyword}{public} UltrasonicSensor \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{getUltrasonicSensor}}()\{}
+\DoxyCodeLine{00037         \textcolor{keywordflow}{return} sensorDistancia;}
+\DoxyCodeLine{00038     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00043}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}{00043}}     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}{getRecogedorCaja}}()\{}
+\DoxyCodeLine{00044         \textcolor{keywordflow}{return} recogedorDeCaja;}
+\DoxyCodeLine{00045     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00050}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{00050}}     \textcolor{keyword}{public} \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{getDireccion}}()\{}
+\DoxyCodeLine{00051         \textcolor{keywordflow}{return} direccion;}
+\DoxyCodeLine{00052     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00057}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac177a862eb6c1a8cba1366fda28bc293}{00057}}     \textcolor{keyword}{public} \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac177a862eb6c1a8cba1366fda28bc293}{getTarea}}()\{}
+\DoxyCodeLine{00058         \textcolor{keywordflow}{return} tarea;}
+\DoxyCodeLine{00059     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00064}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{00064}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{setDireccion}}(\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}} pDireccion)\{}
+\DoxyCodeLine{00065         direccion = pDireccion;}
+\DoxyCodeLine{00066     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00071}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{00071}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}} pTarea)\{}
+\DoxyCodeLine{00072         tarea = pTarea;}
+\DoxyCodeLine{00073     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00078}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}{00078}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}{darLaVuelta}}()\{}
+\DoxyCodeLine{00079         super.darLaVuelta();}
+\DoxyCodeLine{00080         \textcolor{keywordtype}{int} grados;}
+\DoxyCodeLine{00081         grados = (\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{getDireccion}}().\mbox{\hyperlink{enumpmyoo_1_1_direccion_a939a949b6dc8128254357b4f51f745a7}{getValor}}() + 180) \% 360; }
+\DoxyCodeLine{00082         \textcolor{keywordflow}{if} ( grados == 0 )}
+\DoxyCodeLine{00083         \{}
+\DoxyCodeLine{00084             direccion = \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.ESTE;}
+\DoxyCodeLine{00085         \}}
+\DoxyCodeLine{00086         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( grados == 90  )}
+\DoxyCodeLine{00087         \{}
+\DoxyCodeLine{00088             direccion = \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.SUR;}
+\DoxyCodeLine{00089         \}}
+\DoxyCodeLine{00090         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}( grados == 180 )}
+\DoxyCodeLine{00091         \{}
+\DoxyCodeLine{00092             direccion = \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.OESTE;}
+\DoxyCodeLine{00093         \}}
+\DoxyCodeLine{00094         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00095         \{}
+\DoxyCodeLine{00096             direccion = \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.NORTE;}
+\DoxyCodeLine{00097         \}  }
+\DoxyCodeLine{00098     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00103}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}{00103}}     \textcolor{keyword}{public} \textcolor{keywordtype}{boolean} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}{debeSeguirBorde}}(Color color)\{}
+\DoxyCodeLine{00104         \textcolor{keywordflow}{if} (tarea == \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.EN\_CASA || tarea == \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.CARGANDO)\{}
+\DoxyCodeLine{00105             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00106         \}}
+\DoxyCodeLine{00107         \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00108             \textcolor{keywordflow}{return} super.debeSeguirBorde(color);}
+\DoxyCodeLine{00109         \}}
+\DoxyCodeLine{00110     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00115}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}{00115}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}{buscarFila}}(Color color)\{}
+\DoxyCodeLine{00116         super.buscarFila(color);}
+\DoxyCodeLine{00117         \textcolor{keywordflow}{if} (tarea != \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.DEJANDO\_CAJA)\{}
+\DoxyCodeLine{00118             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.BUSCANDO\_FILA);}
+\DoxyCodeLine{00119         \}}
+\DoxyCodeLine{00120     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00124}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}{00124}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}{girar}}()\{}
+\DoxyCodeLine{00125         \textcolor{comment}{//girarD(675);}}
+\DoxyCodeLine{00126         \textcolor{keywordflow}{if} (\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{getDireccion}}() == \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.ESTE)}
+\DoxyCodeLine{00127         \{}
+\DoxyCodeLine{00128             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}}(600);}
+\DoxyCodeLine{00129             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{setDireccion}}(\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.NORTE);}
+\DoxyCodeLine{00130         \}}
+\DoxyCodeLine{00131         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{getDireccion}}() == \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.OESTE)}
+\DoxyCodeLine{00132         \{}
+\DoxyCodeLine{00133             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{girarD}}(600);}
+\DoxyCodeLine{00134             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{setDireccion}}(\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.NORTE);}
+\DoxyCodeLine{00135         \}}
+\DoxyCodeLine{00136         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a30c061125ce6a3ec38163034ad40514a}{getDireccion}}() == \mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.SUR)}
+\DoxyCodeLine{00137         \{}
+\DoxyCodeLine{00138             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00139             Tools.delay(20);}
+\DoxyCodeLine{00140             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}}(600);}
+\DoxyCodeLine{00141             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a690bd731488fc829a2622e0f07cad0b6}{setDireccion}}(\mbox{\hyperlink{enumpmyoo_1_1_direccion}{Direccion}}.ESTE);}
+\DoxyCodeLine{00142         \}}
+\DoxyCodeLine{00143     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00151}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}{00151}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}{buscarCaja}}(Color color)\{}
+\DoxyCodeLine{00152         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.BUSCANDO\_FILA);}
+\DoxyCodeLine{00153         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}{buscarFila}}(color);}
+\DoxyCodeLine{00154         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}{girar}}();}
+\DoxyCodeLine{00155         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.BUSCANDO\_CAJA);}
+\DoxyCodeLine{00156         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00157         Tools.delay(200);}
+\DoxyCodeLine{00158         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00159         \textcolor{keywordflow}{while}(\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{getUltrasonicSensor}}().getDistance() > 30 || \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{getUltrasonicSensor}}().getDistance() == -1)\{}
+\DoxyCodeLine{00160             \textcolor{keywordflow}{if} (\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a504be69657cbb863c22ab9155a346ba9}{debeSeguirBorde}}(color))\{}
+\DoxyCodeLine{00161                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a4036e0c59c1de45c9e1fe6d9b6f547d2}{getColorSensor}}().\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{getColor}}().equals(Color.WHITE))\{}
+\DoxyCodeLine{00162                     \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00163                     Tools.delay(50);}
+\DoxyCodeLine{00164                     \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_abbbb90c08a0311a521e75cbe6b6d83f3}{girarI}}(100);}
+\DoxyCodeLine{00165                 \}}
+\DoxyCodeLine{00166                 \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00167                     \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00168                     Tools.delay(50);}
+\DoxyCodeLine{00169                     \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a61b7ad3373e25b4fd9836dd04cfa9c2d}{girarD}}(100);}
+\DoxyCodeLine{00170                 \}}
+\DoxyCodeLine{00171             \}   }
+\DoxyCodeLine{00172         \}}
+\DoxyCodeLine{00173         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00174         }
+\DoxyCodeLine{00175     \}}
+\DoxyCodeLine{00176     @Override}
+\DoxyCodeLine{00177     \textcolor{keyword}{public} \textcolor{keywordtype}{void} far(SensorPort arg0, \textcolor{keywordtype}{int} arg1) \{}
+\DoxyCodeLine{00178         \textcolor{comment}{// TODO Auto-generated method stub}}
+\DoxyCodeLine{00179         }
+\DoxyCodeLine{00180     \}}
+\DoxyCodeLine{00181     @Override}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00185}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a7f6e8263ed191614dc0f92dfd999b8a2}{00185}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a7f6e8263ed191614dc0f92dfd999b8a2}{near}}(SensorPort arg0, \textcolor{keywordtype}{int} arg1) \{}
+\DoxyCodeLine{00186         \textcolor{keywordflow}{if}(tarea == \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.BUSCANDO\_CAJA)\{}
+\DoxyCodeLine{00187             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.CARGANDO);}
+\DoxyCodeLine{00188             \textcolor{comment}{//no se si falta algo}}
+\DoxyCodeLine{00189         \}}
+\DoxyCodeLine{00190         }
+\DoxyCodeLine{00191     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00197}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}{00197}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}{cargarCaja}}(Color color)\{}
+\DoxyCodeLine{00198         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.CARGANDO);}
+\DoxyCodeLine{00199         recogedorDeCaja.\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_ae7bc7adbd886765db7c73c4c5a1223e8}{bajar}}();}
+\DoxyCodeLine{00200         caja = almacenGestor.\mbox{\hyperlink{classpmyoo_1_1_almacen_gestor_aa92a4786670021f05466322d3f43a76a}{recuperarPrimeraCaja}}(color);}
+\DoxyCodeLine{00201         recogedorDeCaja.\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_af00b81c904386ff1758a3afde032baec}{recogerCaja}}(caja);}
+\DoxyCodeLine{00202     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00206}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}{00206}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void}  \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}{descargarCaja}}()\{}
+\DoxyCodeLine{00207         recogedorDeCaja.\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a94c5cdce71ce343490aa39101e551717}{elevar}}();}
+\DoxyCodeLine{00208         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.LIBRE);}
+\DoxyCodeLine{00209         recogedorDeCaja.\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_abe6a643d0dfe800a62ca5887454adf5a}{dejarCaja}}(caja);}
+\DoxyCodeLine{00210     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00218}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}{00218}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void}  \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}{dejarCaja}}(Color color)\{}
+\DoxyCodeLine{00219         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.DEJANDO\_CAJA);}
+\DoxyCodeLine{00220         \textcolor{keywordflow}{while}(!\mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a27155660677b06b198be7ecd2ad60d47}{getColor}}().equals(Color.BLACK))\{}
+\DoxyCodeLine{00221             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00222             Tools.delay(30);}
+\DoxyCodeLine{00223             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00224             \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ae84d98c91e3842d3230cb1e0f2291daf}{seguirBorde}}(color);}
+\DoxyCodeLine{00225         \}}
+\DoxyCodeLine{00226         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_a08fed63ed219dfdab645e810f5c8fa4c}{adelante}}();}
+\DoxyCodeLine{00227         Tools.delay(300);}
+\DoxyCodeLine{00228         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00229         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a27e6bba63375c07eeff782c1f851dbac}{girar}}();}
+\DoxyCodeLine{00230         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abecf9176c9a4f8fdfc4820743e552208}{buscarFila}}(\textcolor{keyword}{new} Color(254,202,0));}
+\DoxyCodeLine{00231         super.girarD(130);}
+\DoxyCodeLine{00232         Tools.delay(50);}
+\DoxyCodeLine{00233         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0a28caccd0cf089a3ac6857da1c21893}{descargarCaja}}();}
+\DoxyCodeLine{00234     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00241}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a24399de751eba50437b45f86c522a4b5}{00241}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a24399de751eba50437b45f86c522a4b5}{prepararPedido}}(Color color)\{}
+\DoxyCodeLine{00242         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a544b4dae21c4e14e5ae3a36460ea2b0e}{buscarCaja}}(color);}
+\DoxyCodeLine{00243         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af7770f1053e76452be29110f8fa6a066}{cargarCaja}}(color);}
+\DoxyCodeLine{00244         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}{darLaVuelta}}();}
+\DoxyCodeLine{00245         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_aa848a642fe880fa76c8614ab4825ca74}{getUltrasonicSensor}}().eraseBeamArea();}
+\DoxyCodeLine{00246         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0c17cc5414eee6b47d30ec709199cc99}{dejarCaja}}(color);}
+\DoxyCodeLine{00247         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_ab880f9a6c207957dba3f7c2a1f937bf4}{atras}}();}
+\DoxyCodeLine{00248         Tools.delay(400);}
+\DoxyCodeLine{00249         \mbox{\hyperlink{classpmyoo_1_1_robot_seguidor_linea_aa795ed8f379d2242f58280ceef5ba122}{parar}}();}
+\DoxyCodeLine{00250         \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_af772690ae20bdbf40d1d3a3ff6c3f8ec}{darLaVuelta}}();}
+\DoxyCodeLine{00251         caja.removeSelf();}
+\DoxyCodeLine{00252         }
+\DoxyCodeLine{00253     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00257}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a9954de4c940ddafd6278cc9a5da35e75}{00257}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a9954de4c940ddafd6278cc9a5da35e75}{irAcasa}}()\{}
+\DoxyCodeLine{00258         \textcolor{keywordflow}{if} (tarea == \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.LIBRE)\{}
+\DoxyCodeLine{00259             super.irAcasa();}
+\DoxyCodeLine{00260         \}}
+\DoxyCodeLine{00261     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00265}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abd5aae119c70a9a514920fd4cdd0b136}{00265}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void}  \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_abd5aae119c70a9a514920fd4cdd0b136}{pressed}}(SensorPort port)\{}
+\DoxyCodeLine{00266         \textcolor{keywordflow}{if} (tarea == \mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.LIBRE)\{}
+\DoxyCodeLine{00267             \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ae454e4dc2b2965fd00f450cc437114a4}{setTarea}}(\mbox{\hyperlink{enumpmyoo_1_1_tarea}{Tarea}}.EN\_CASA);}
+\DoxyCodeLine{00268         \}}
+\DoxyCodeLine{00269         super.pressed(port);}
+\DoxyCodeLine{00270     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00274}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0e025c876380e71fbe54ffaf1aa015a6}{00274}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a0e025c876380e71fbe54ffaf1aa015a6}{setGestor}}(\mbox{\hyperlink{classpmyoo_1_1_almacen_gestor}{AlmacenGestor}} gestor) \{}
+\DoxyCodeLine{00275         almacenGestor = gestor;}
+\DoxyCodeLine{00276     \}}
+\DoxyCodeLine{\Hypertarget{_robot_preparador_8java_source_l00281}\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a696e8a35162f389ca0055fc7a5523bf9}{00281}}     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador_a696e8a35162f389ca0055fc7a5523bf9}{getCaja}}()\{}
+\DoxyCodeLine{00282         \textcolor{keywordflow}{return} caja;}
+\DoxyCodeLine{00283     \}}
+\DoxyCodeLine{00284 \}}
+
+\end{DoxyCode}

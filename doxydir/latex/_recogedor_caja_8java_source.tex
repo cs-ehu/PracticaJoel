@@ -1,0 +1,75 @@
+\hypertarget{_recogedor_caja_8java_source}{}\section{Recogedor\+Caja.\+java}
+\label{_recogedor_caja_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/RecogedorCaja.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/RecogedorCaja.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 }
+\DoxyCodeLine{00004 \textcolor{keyword}{import} java.awt.Point;}
+\DoxyCodeLine{00005 }
+\DoxyCodeLine{00006 \textcolor{keyword}{import} ch.aplu.jgamegrid.*;}
+\DoxyCodeLine{00007 \textcolor{keyword}{import} ch.aplu.robotsim.*;}
+\DoxyCodeLine{00008 }
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00009}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{00009}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}} \textcolor{keyword}{extends} Actor\{}
+\DoxyCodeLine{00010     \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keyword}{final} \textcolor{keywordtype}{int} TIEMPO\_ELEVADOR = 50;}
+\DoxyCodeLine{00011     }
+\DoxyCodeLine{00012     \textcolor{keyword}{private} Motor motor;}
+\DoxyCodeLine{00013     \textcolor{keyword}{private} Actor caja2;}
+\DoxyCodeLine{00014     \textcolor{keyword}{private} \textcolor{keywordtype}{boolean} primera;}
+\DoxyCodeLine{00015     \textcolor{keyword}{private} \textcolor{keywordtype}{boolean} arriba;}
+\DoxyCodeLine{00016     }
+\DoxyCodeLine{00017     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}}(MotorPort port) \{}
+\DoxyCodeLine{00018         super(\textcolor{keyword}{true}, \textcolor{stringliteral}{"escenarios/recogedorCaja.png"});}
+\DoxyCodeLine{00019         caja2 = \textcolor{keyword}{new} Actor(\textcolor{stringliteral}{"escenarios/cajaGris2.png"});}
+\DoxyCodeLine{00020         setDirection(270);}
+\DoxyCodeLine{00021         motor = \textcolor{keyword}{new} Motor(port);}
+\DoxyCodeLine{00022         primera = \textcolor{keyword}{true};}
+\DoxyCodeLine{00023         arriba = \textcolor{keyword}{true};}
+\DoxyCodeLine{00024     \} }
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00029}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a3e34ca212881d63d8d9eb5657dcc2089}{00029}}     \textcolor{keyword}{public} Motor \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a3e34ca212881d63d8d9eb5657dcc2089}{getMotor}}()\{}
+\DoxyCodeLine{00030         \textcolor{keywordflow}{return} motor;}
+\DoxyCodeLine{00031     \}}
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00036}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a94c5cdce71ce343490aa39101e551717}{00036}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a94c5cdce71ce343490aa39101e551717}{elevar}}()\{}
+\DoxyCodeLine{00037         motor.forward();    }
+\DoxyCodeLine{00038         Tools.delay(TIEMPO\_ELEVADOR);}
+\DoxyCodeLine{00039         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i < 9; i++)\{}
+\DoxyCodeLine{00040             this.rotate(\textcolor{keyword}{new} Point(430, 90), 10);}
+\DoxyCodeLine{00041             Tools.delay(40);}
+\DoxyCodeLine{00042         \}}
+\DoxyCodeLine{00043         motor.stop();}
+\DoxyCodeLine{00044         arriba = \textcolor{keyword}{true};}
+\DoxyCodeLine{00045     \}}
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00050}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_ae7bc7adbd886765db7c73c4c5a1223e8}{00050}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_ae7bc7adbd886765db7c73c4c5a1223e8}{bajar}}()\{}
+\DoxyCodeLine{00051         motor.backward();}
+\DoxyCodeLine{00052         Tools.delay(TIEMPO\_ELEVADOR);}
+\DoxyCodeLine{00053         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i=0; i < 9; i++)\{}
+\DoxyCodeLine{00054             this.rotate(\textcolor{keyword}{new} Point(430, 90), -10);}
+\DoxyCodeLine{00055             Tools.delay(40);}
+\DoxyCodeLine{00056         \}}
+\DoxyCodeLine{00057         motor.stop();}
+\DoxyCodeLine{00058         arriba = \textcolor{keyword}{false};}
+\DoxyCodeLine{00059     \}}
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00064}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a6c8a3ab0cdcfe6037f82de19791dfa39}{00064}}     \textcolor{keyword}{public} \textcolor{keywordtype}{boolean} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_a6c8a3ab0cdcfe6037f82de19791dfa39}{getEstado}}()\{}
+\DoxyCodeLine{00065         \textcolor{keywordflow}{return} arriba;}
+\DoxyCodeLine{00066     \}}
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00071}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_af00b81c904386ff1758a3afde032baec}{00071}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_af00b81c904386ff1758a3afde032baec}{recogerCaja}}(\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja)\{}
+\DoxyCodeLine{00072         caja.hide();}
+\DoxyCodeLine{00073         \textcolor{keywordflow}{if} (primera)\{}
+\DoxyCodeLine{00074             LegoRobot.getGameGrid().addActor(caja2, \textcolor{keyword}{new} Location(400, 70));}
+\DoxyCodeLine{00075             primera = \textcolor{keyword}{false};}
+\DoxyCodeLine{00076         \}}
+\DoxyCodeLine{00077         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00078             caja2.show();}
+\DoxyCodeLine{00079     \}}
+\DoxyCodeLine{\Hypertarget{_recogedor_caja_8java_source_l00084}\mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_abe6a643d0dfe800a62ca5887454adf5a}{00084}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja_abe6a643d0dfe800a62ca5887454adf5a}{dejarCaja}}(\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja)\{}
+\DoxyCodeLine{00085         Location loc = \textcolor{keyword}{new} Location(450,447);}
+\DoxyCodeLine{00086         caja.setLocation(loc);}
+\DoxyCodeLine{00087 \textcolor{comment}{//      caja.rotate(new Point(450,450), 90);}}
+\DoxyCodeLine{00088 \textcolor{comment}{//      Tools.delay(40);}}
+\DoxyCodeLine{00089         caja.show();}
+\DoxyCodeLine{00090         caja2.hide();}
+\DoxyCodeLine{00091         Tools.delay(100);}
+\DoxyCodeLine{00092     \}}
+\DoxyCodeLine{00093 \}}
+
+\end{DoxyCode}

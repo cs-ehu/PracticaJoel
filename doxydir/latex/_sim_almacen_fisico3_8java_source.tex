@@ -1,0 +1,129 @@
+\hypertarget{_sim_almacen_fisico3_8java_source}{}\section{Sim\+Almacen\+Fisico3.\+java}
+\label{_sim_almacen_fisico3_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/SimAlmacenFisico3.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/SimAlmacenFisico3.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 \textcolor{keyword}{import} ch.aplu.robotsim.*;}
+\DoxyCodeLine{00004 \textcolor{keyword}{import} ch.aplu.jgamegrid.*;}
+\DoxyCodeLine{00005 \textcolor{keyword}{import} java.awt.*;}
+\DoxyCodeLine{00006 }
+\DoxyCodeLine{\Hypertarget{_sim_almacen_fisico3_8java_source_l00007}\mbox{\hyperlink{classpmyoo_1_1_sim_almacen_fisico3}{00007}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_sim_almacen_fisico3}{SimAlmacenFisico3}}}
+\DoxyCodeLine{00008 \{}
+\DoxyCodeLine{00009   \textcolor{keyword}{private} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{RobotPreparador}} robot;}
+\DoxyCodeLine{00010   \textcolor{keyword}{private} \textcolor{keyword}{static} \mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}} stock;}
+\DoxyCodeLine{00011     }
+\DoxyCodeLine{00012   \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_sim_almacen_fisico3}{SimAlmacenFisico3}}()}
+\DoxyCodeLine{00013   \{}
+\DoxyCodeLine{00014       robot = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{RobotPreparador}}();}
+\DoxyCodeLine{00015   \}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017   \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} main(String[] args)}
+\DoxyCodeLine{00018   \{}
+\DoxyCodeLine{00019     \mbox{\hyperlink{classpmyoo_1_1_sim_almacen_fisico3}{SimAlmacenFisico3}} escenario = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_sim_almacen_fisico3}{SimAlmacenFisico3}}();}
+\DoxyCodeLine{00020     anadirCajasEscenario();}
+\DoxyCodeLine{00021     \mbox{\hyperlink{classpmyoo_1_1_recogedor_caja}{RecogedorCaja}} recogedor = escenario.getRobot().\mbox{\hyperlink{classpmyoo_1_1_robot_preparador_ac9dd9f6ea640ba102a3ca34edaa85054}{getRecogedorCaja}}();}
+\DoxyCodeLine{00022     LegoRobot.getGameGrid().addActor(recogedor, \textcolor{keyword}{new} Location(430, 60));}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00024 \textcolor{comment}{/*}}
+\DoxyCodeLine{00025 \textcolor{comment}{    RecogedorCaja recogedor = new RecogedorCaja(MotorPort.C);}}
+\DoxyCodeLine{00026 \textcolor{comment}{    LegoRobot.getGameGrid().addActor(recogedor, new Location(430, 60));}}
+\DoxyCodeLine{00027 \textcolor{comment}{ }}
+\DoxyCodeLine{00028 \textcolor{comment}{}}
+\DoxyCodeLine{00029 \textcolor{comment}{    escenario.getRobot().getLegoRobot().addPart(recogedor.getMotor());}}
+\DoxyCodeLine{00030 \textcolor{comment}{    recogedor.bajar();}}
+\DoxyCodeLine{00031 \textcolor{comment}{    Tools.delay(2000);}}
+\DoxyCodeLine{00032 \textcolor{comment}{    recogedor.elevar();}}
+\DoxyCodeLine{00033 \textcolor{comment}{ */}  }
+\DoxyCodeLine{00034     escenario.getRobot().act();}
+\DoxyCodeLine{00035   \}}
+\DoxyCodeLine{00036   }
+\DoxyCodeLine{00037   \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_robot_preparador}{RobotPreparador}} getRobot()\{}
+\DoxyCodeLine{00038       \textcolor{keywordflow}{return} robot;}
+\DoxyCodeLine{00039   \}}
+\DoxyCodeLine{00040   }
+\DoxyCodeLine{00041   \textcolor{keyword}{public} \textcolor{keyword}{static} \mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}} getStock()\{}
+\DoxyCodeLine{00042       \textcolor{keywordflow}{return} stock;}
+\DoxyCodeLine{00043   \}}
+\DoxyCodeLine{00044   }
+\DoxyCodeLine{00045   \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} anadirCajasEscenario()\{}
+\DoxyCodeLine{00046       \textcolor{keywordtype}{int} x = 122;}
+\DoxyCodeLine{00047       \textcolor{keywordtype}{int} y = 285;}
+\DoxyCodeLine{00048       \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{00049       \textcolor{keywordflow}{for}(\mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}} estanteria: stock.\mbox{\hyperlink{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}{getEstanterias}}())\{}
+\DoxyCodeLine{00050           \textcolor{keywordtype}{int} cx = x + 75*i;}
+\DoxyCodeLine{00051           \textcolor{keywordtype}{int} j = 0;}
+\DoxyCodeLine{00052           \textcolor{keywordflow}{for}(\mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja: estanteria.getCajas())\{}
+\DoxyCodeLine{00053                 \textcolor{keywordtype}{int} cy = y - 20*j;}
+\DoxyCodeLine{00054                 LegoRobot.getGameGrid().addActor(caja, \textcolor{keyword}{new} Location(cx, cy));}
+\DoxyCodeLine{00055                 j++;}
+\DoxyCodeLine{00056           \}}
+\DoxyCodeLine{00057           i++;}
+\DoxyCodeLine{00058       \}}
+\DoxyCodeLine{00059   \}}
+\DoxyCodeLine{00060   }
+\DoxyCodeLine{00061   }
+\DoxyCodeLine{00062   \textcolor{keyword}{public} \textcolor{keyword}{static} \textcolor{keywordtype}{void} actualizarStock(Color[] colores, \textcolor{keywordtype}{int} numCajas)\{}
+\DoxyCodeLine{00063         \textcolor{comment}{// cajas son actores y tienen target}}
+\DoxyCodeLine{00064         \textcolor{keywordtype}{int} x = 122;}
+\DoxyCodeLine{00065         \textcolor{keywordtype}{int} y = 285;}
+\DoxyCodeLine{00066         stock = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}}(colores);}
+\DoxyCodeLine{00067         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < colores.length; i++)\{}
+\DoxyCodeLine{00068             \textcolor{keywordtype}{int} cx = x + 75*i; }
+\DoxyCodeLine{00069             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} j = 0; j < numCajas; j++)\{}
+\DoxyCodeLine{00070                 \textcolor{keywordtype}{int} cy = y - 20*j;}
+\DoxyCodeLine{00071                 \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}}();}
+\DoxyCodeLine{00072                 stock.\mbox{\hyperlink{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}{anadirCaja}}(colores[i], caja);}
+\DoxyCodeLine{00073                 RobotContext.useTarget(caja.getTarget(), cx, cy+5);         }
+\DoxyCodeLine{00074             \}}
+\DoxyCodeLine{00075         \}}
+\DoxyCodeLine{00076   \}}
+\DoxyCodeLine{00077   }
+\DoxyCodeLine{00078   \textcolor{comment}{// ------------------ Environment --------------------------}}
+\DoxyCodeLine{00079   \textcolor{keyword}{private} \textcolor{keyword}{static} GGBitmap bar(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} length, Color color)}
+\DoxyCodeLine{00080   \{}
+\DoxyCodeLine{00081     GGBitmap bm = \textcolor{keyword}{new} GGBitmap(width, length);}
+\DoxyCodeLine{00082     bm.setPaintColor(color);}
+\DoxyCodeLine{00083     bm.fillRectangle(\textcolor{keyword}{new} Point(0, 0), \textcolor{keyword}{new} Point(width - 1, length - 1));}
+\DoxyCodeLine{00084 \textcolor{comment}{/*    if (color == Color.WHITE)\{}}
+\DoxyCodeLine{00085 \textcolor{comment}{        bm.setPaintColor(Color.BLACK);}}
+\DoxyCodeLine{00086 \textcolor{comment}{        bm.drawRectangle(new Point(0, 0), new Point(width - 1, length - 1));}}
+\DoxyCodeLine{00087 \textcolor{comment}{    \}}}
+\DoxyCodeLine{00088 \textcolor{comment}{    */}}
+\DoxyCodeLine{00089     \textcolor{keywordflow}{return} bm;}
+\DoxyCodeLine{00090   \}}
+\DoxyCodeLine{00091 }
+\DoxyCodeLine{00092   \textcolor{keyword}{static}}
+\DoxyCodeLine{00093   \{}
+\DoxyCodeLine{00094     \textcolor{keywordtype}{int} y = 447;}
+\DoxyCodeLine{00095     \textcolor{keywordtype}{int} ylinea = y -3;}
+\DoxyCodeLine{00096     \textcolor{keywordtype}{int} xcasa = 52;}
+\DoxyCodeLine{00097     \textcolor{keywordtype}{int} xcarga = 430;}
+\DoxyCodeLine{00098     \textcolor{keywordtype}{int} xfila1 = 125;}
+\DoxyCodeLine{00099     \textcolor{keywordtype}{int} yfila1 = 280;}
+\DoxyCodeLine{00100     RobotContext.showStatusBar(30);}
+\DoxyCodeLine{00101     RobotContext.showNavigationBar();}
+\DoxyCodeLine{00102 \textcolor{comment}{//    RobotContext.setStartPosition(20, y-5);}}
+\DoxyCodeLine{00103     RobotContext.setStartDirection(0);}
+\DoxyCodeLine{00104     RobotContext.setStartPosition(xcasa, ylinea); }
+\DoxyCodeLine{00105 \textcolor{comment}{//    RobotContext.setStartPosition(xcarga, y); }}
+\DoxyCodeLine{00106 \textcolor{comment}{//    RobotContext.setStartPosition(xfila1, yfila1); }}
+\DoxyCodeLine{00107 \textcolor{comment}{//    RobotContext.setStartDirection(90); //-90}}
+\DoxyCodeLine{00108     RobotContext.useBackground(\textcolor{stringliteral}{"escenarios/EscenarioAlmacen4lineas2.png"});}
+\DoxyCodeLine{00109 }
+\DoxyCodeLine{00110     \textcolor{comment}{//casa borde}}
+\DoxyCodeLine{00111     RobotContext.useObstacle(bar(10, 60, Color.MAGENTA), 8, y-8); \textcolor{comment}{//obstacle}}
+\DoxyCodeLine{00112 }
+\DoxyCodeLine{00113     \textcolor{comment}{//visor elevador}}
+\DoxyCodeLine{00114     RobotContext.useObstacle(bar(80, 2, Color.BLACK), 400, 20);}
+\DoxyCodeLine{00115     RobotContext.useObstacle(bar(2, 90, Color.BLACK), 360, 65);}
+\DoxyCodeLine{00116     RobotContext.useObstacle(bar(80, 2, Color.BLACK), 400, 110);}
+\DoxyCodeLine{00117     RobotContext.useObstacle(bar(2, 90, Color.BLACK), 440, 65);}
+\DoxyCodeLine{00118  }
+\DoxyCodeLine{00119     actualizarStock(\textcolor{keyword}{new} Color[]\{\textcolor{keyword}{new} Color(253,10,0), \textcolor{keyword}{new} Color(36,255,0), Color.YELLOW, Color.BLUE\}, 3);}
+\DoxyCodeLine{00120      }
+\DoxyCodeLine{00121 }
+\DoxyCodeLine{00122   \}}
+\DoxyCodeLine{00123 \}}
+
+\end{DoxyCode}

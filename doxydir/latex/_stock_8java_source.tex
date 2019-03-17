@@ -1,0 +1,59 @@
+\hypertarget{_stock_8java_source}{}\section{Stock.\+java}
+\label{_stock_8java_source}\index{eclipse-\/workspace/practicaRobot/src/pmyoo/Stock.java@{eclipse-\/workspace/practicaRobot/src/pmyoo/Stock.java}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{keyword}{package }pmyoo;}
+\DoxyCodeLine{00002 }
+\DoxyCodeLine{00003 \textcolor{keyword}{import} java.awt.Color;}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00009}\mbox{\hyperlink{classpmyoo_1_1_stock}{00009}} \textcolor{keyword}{public} \textcolor{keyword}{class }\mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}} \{}
+\DoxyCodeLine{00010     \textcolor{keyword}{private} Color[] colores;}
+\DoxyCodeLine{00011     \textcolor{keyword}{private} \mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}}[] estanterias;}
+\DoxyCodeLine{00012     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_stock}{Stock}}( Color[] pColores )\{}
+\DoxyCodeLine{00013         colores = \textcolor{keyword}{new} Color[pColores.length];}
+\DoxyCodeLine{00014         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0 ; i < colores.length ; i++  )}
+\DoxyCodeLine{00015         \{}
+\DoxyCodeLine{00016             colores[i] = pColores[i];}
+\DoxyCodeLine{00017         \}           }
+\DoxyCodeLine{00018         estanterias = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}}[ pColores.length ];}
+\DoxyCodeLine{00019         \textcolor{keywordflow}{for}( \textcolor{keywordtype}{int} i = 0 ; i < pColores.length ; i++ )}
+\DoxyCodeLine{00020         \{}
+\DoxyCodeLine{00021             estanterias[i] = \textcolor{keyword}{new} \mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}}( colores[i] );}
+\DoxyCodeLine{00022         \}}
+\DoxyCodeLine{00023     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00028}\mbox{\hyperlink{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}{00028}}     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_estanteria}{Estanteria}}[] \mbox{\hyperlink{classpmyoo_1_1_stock_aa3d6d98fc65dc6237847ce7da5aa56b0}{getEstanterias}}()\{}
+\DoxyCodeLine{00029         \textcolor{keywordflow}{return} estanterias;}
+\DoxyCodeLine{00030     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00035}\mbox{\hyperlink{classpmyoo_1_1_stock_a4288d71a85dccd91e9937f69f37f747a}{00035}}     \textcolor{keyword}{public} Color[] \mbox{\hyperlink{classpmyoo_1_1_stock_a4288d71a85dccd91e9937f69f37f747a}{getColores}}()\{}
+\DoxyCodeLine{00036         \textcolor{keywordflow}{return} colores;}
+\DoxyCodeLine{00037     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00042}\mbox{\hyperlink{classpmyoo_1_1_stock_a3746eff21c1c587afd89c058134ec194}{00042}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{classpmyoo_1_1_stock_a3746eff21c1c587afd89c058134ec194}{getNumEstanterias}}()\{}
+\DoxyCodeLine{00043         \textcolor{keywordflow}{return} estanterias.length;}
+\DoxyCodeLine{00044     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00050}\mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{00050}}     \textcolor{keyword}{public} \textcolor{keywordtype}{int} \mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{buscarPosicion}}(Color color)\{}
+\DoxyCodeLine{00051         \textcolor{keywordtype}{int} posicion = 0;}
+\DoxyCodeLine{00052         \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{00053         \textcolor{keywordtype}{boolean} encontrado = \textcolor{keyword}{false};}
+\DoxyCodeLine{00054         \textcolor{keywordflow}{while} (i<colores.length \&\& encontrado == \textcolor{keyword}{false})\{}
+\DoxyCodeLine{00055             \textcolor{keywordflow}{if} (colores[i].equals(color))\{}
+\DoxyCodeLine{00056                 encontrado = \textcolor{keyword}{true};}
+\DoxyCodeLine{00057                 posicion = i;}
+\DoxyCodeLine{00058             \}}
+\DoxyCodeLine{00059             \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00060                 posicion = -1;}
+\DoxyCodeLine{00061                 i++;}
+\DoxyCodeLine{00062             \}}
+\DoxyCodeLine{00063         \}}
+\DoxyCodeLine{00064         \textcolor{keywordflow}{return} posicion;}
+\DoxyCodeLine{00065     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00071}\mbox{\hyperlink{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}{00071}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_stock_adc31e9718cf4c31b6506fbe61a5d9730}{anadirCaja}}(Color color, \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja) \{  }
+\DoxyCodeLine{00072         estanterias[\mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{buscarPosicion}}(color)].\mbox{\hyperlink{classpmyoo_1_1_estanteria_a5e619daab7e121fa359dc5f349f19c61}{anadirCaja}}(caja);}
+\DoxyCodeLine{00073     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00079}\mbox{\hyperlink{classpmyoo_1_1_stock_aa35d4c380eecb522d2e1d434a4e73c3e}{00079}}     \textcolor{keyword}{public} \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} \mbox{\hyperlink{classpmyoo_1_1_stock_aa35d4c380eecb522d2e1d434a4e73c3e}{recuperarPrimeraCaja}}(Color color)\{}
+\DoxyCodeLine{00080         \textcolor{keywordflow}{return} estanterias[\mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{buscarPosicion}}(color)].\mbox{\hyperlink{classpmyoo_1_1_estanteria_a4f1b8c3efff2337b97b73056a07a616b}{recuperarPrimeraCaja}}();}
+\DoxyCodeLine{00081     \}}
+\DoxyCodeLine{\Hypertarget{_stock_8java_source_l00087}\mbox{\hyperlink{classpmyoo_1_1_stock_a295143a257ca45b1d60a65c16eea3e86}{00087}}     \textcolor{keyword}{public} \textcolor{keywordtype}{void} \mbox{\hyperlink{classpmyoo_1_1_stock_a295143a257ca45b1d60a65c16eea3e86}{cajaServida}}(Color color, \mbox{\hyperlink{classpmyoo_1_1_caja}{Caja}} caja)\{}
+\DoxyCodeLine{00088         estanterias[\mbox{\hyperlink{classpmyoo_1_1_stock_a83fe7e4befb16346707bc212e2e3a1d7}{buscarPosicion}}(color)].\mbox{\hyperlink{classpmyoo_1_1_estanteria_a7dc19a7857a4392cccf46a31285f8692}{cajaServida}}(caja);}
+\DoxyCodeLine{00089     \}}
+\DoxyCodeLine{00090 \}}
+
+\end{DoxyCode}
